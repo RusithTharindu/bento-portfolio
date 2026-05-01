@@ -25,7 +25,8 @@ export type GitHubActivity = {
   fromLabel: string;
   toLabel: string;
   cells: GitHubActivityCell[];
-  repositories: GitHubRepository[];
+  topStarredRepositories: GitHubRepository[];
+  recentlyActiveRepositories: GitHubRepository[];
   source: "github" | "fallback";
 };
 
@@ -48,7 +49,10 @@ type GitHubGraphQLResponse = {
           weeks: GitHubWeek[];
         };
       };
-      repositories: {
+      topStarredRepositories: {
+        nodes: GitHubRepository[];
+      };
+      recentlyActiveRepositories: {
         nodes: GitHubRepository[];
       };
     };
@@ -73,11 +77,30 @@ const githubQuery = `
           }
         }
       }
-      repositories(
+      topStarredRepositories: repositories(
         first: 4
         ownerAffiliations: OWNER
         isFork: false
         orderBy: { field: STARGAZERS, direction: DESC }
+      ) {
+        nodes {
+          name
+          description
+          url
+          stargazerCount
+          forkCount
+          primaryLanguage {
+            name
+            color
+          }
+          pushedAt
+        }
+      }
+      recentlyActiveRepositories: repositories(
+        first: 4
+        ownerAffiliations: OWNER
+        isFork: false
+        orderBy: { field: PUSHED_AT, direction: DESC }
       ) {
         nodes {
           name
@@ -163,7 +186,8 @@ function createFallbackActivity(): GitHubActivity {
     fromLabel: "sample",
     toLabel: "data",
     cells,
-    repositories: [],
+    topStarredRepositories: [],
+    recentlyActiveRepositories: [],
     source: "fallback",
   };
 }
@@ -216,7 +240,8 @@ export async function getGitHubActivity(): Promise<GitHubActivity> {
         ? formatMonthLabel(cells.at(-1)!.date)
         : "now",
       cells,
-      repositories: user.repositories.nodes,
+      topStarredRepositories: user.topStarredRepositories.nodes,
+      recentlyActiveRepositories: user.recentlyActiveRepositories.nodes,
       source: "github",
     };
   } catch {
