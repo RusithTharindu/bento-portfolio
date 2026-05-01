@@ -12,13 +12,16 @@ export function EducationCard() {
         </div>
         <div className="education-list">
           {education.map((item) => (
-            <article className="education-item" key={`${item.period}-${item.qualification}`}>
+            <article
+              className="education-item"
+              key={`${item.period}-${item.qualification}`}
+            >
               <div className="education-period">{item.period}</div>
               <div className="education-body">
                 <div className="education-title-row">
                   <h3>{item.qualification}</h3>
                   <span className={`education-state ${item.state}`}>
-                    {item.state === "current" ? "Current" : "Completed"}
+                    {item.state === "current" ? "Pursuing" : "Completed"}
                   </span>
                 </div>
                 <div className="education-school">{item.institution}</div>

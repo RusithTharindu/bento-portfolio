@@ -40,7 +40,7 @@ export type EducationItem = {
 
 export const education: EducationItem[] = [
   {
-    period: "2025 - CURRENT",
+    period: "2025 - PRESENT",
     qualification: "Master's Degree in Cybersecurity",
     institution: "University of Staffordshire",
     state: "current",
