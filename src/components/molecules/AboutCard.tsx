@@ -1,8 +1,9 @@
+import { MotionCard } from "@/src/components/atoms/MotionCard";
 import { SectionLabel } from "@/src/components/atoms/SectionLabel";
 
 export function AboutCard() {
   return (
-    <section className="cell c-about">
+    <MotionCard className="cell c-about" delay={0.1}>
       <div className="about">
         <SectionLabel>About</SectionLabel>
         <p>
@@ -13,6 +14,6 @@ export function AboutCard() {
         </p>
         <p>Off-hours: reading type systems, running long, and tuning small interfaces.</p>
       </div>
-    </section>
+    </MotionCard>
   );
 }

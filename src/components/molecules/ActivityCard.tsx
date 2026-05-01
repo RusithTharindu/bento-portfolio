@@ -1,11 +1,12 @@
 import { ActivityGrid } from "@/src/components/atoms/ActivityGrid";
+import { MotionCard } from "@/src/components/atoms/MotionCard";
 import { SectionLabel } from "@/src/components/atoms/SectionLabel";
 
 const scaleColors = ["#18181b", "#2a1a1c", "#4a1f22", "#7a2a2e", "oklch(0.72 0.18 20)"];
 
 export function ActivityCard() {
   return (
-    <section className="cell c-github">
+    <MotionCard className="cell c-github" delay={0.3}>
       <div className="gh">
         <SectionLabel>Activity</SectionLabel>
         <div className="gh-head">
@@ -27,6 +28,6 @@ export function ActivityCard() {
           <span>Apr &apos;26</span>
         </div>
       </div>
-    </section>
+    </MotionCard>
   );
 }

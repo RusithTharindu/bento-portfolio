@@ -1,6 +1,8 @@
+import { MotionCard } from "@/src/components/atoms/MotionCard";
+
 export function HeroCard() {
   return (
-    <section className="cell c-hero">
+    <MotionCard className="cell c-hero">
       <div className="hero">
         <div className="hero-top">
           <div className="hero-meta">- PORTFOLIO / 2026</div>
@@ -23,6 +25,6 @@ export function HeroCard() {
           </p>
         </div>
       </div>
-    </section>
+    </MotionCard>
   );
 }

@@ -1,14 +1,17 @@
 "use client";
 
+import { motion, useMotionTemplate, useMotionValue } from "motion/react";
 import { useEffect } from "react";
 
 export function Spotlight() {
-  useEffect(() => {
-    const spotlight = document.querySelector<HTMLElement>(".spotlight");
+  const mouseX = useMotionValue("50%");
+  const mouseY = useMotionValue("50%");
+  const background = useMotionTemplate`radial-gradient(600px circle at ${mouseX} ${mouseY}, rgba(255, 255, 255, 0.045), transparent 40%)`;
 
+  useEffect(() => {
     const updatePointer = (event: PointerEvent) => {
-      spotlight?.style.setProperty("--mx", `${event.clientX}px`);
-      spotlight?.style.setProperty("--my", `${event.clientY}px`);
+      mouseX.set(`${event.clientX}px`);
+      mouseY.set(`${event.clientY}px`);
     };
 
     const updateCellGlow = (event: PointerEvent) => {
@@ -27,7 +30,7 @@ export function Spotlight() {
       window.removeEventListener("pointermove", updatePointer);
       document.removeEventListener("pointermove", updateCellGlow);
     };
-  }, []);
+  }, [mouseX, mouseY]);
 
-  return <div className="spotlight" aria-hidden="true" />;
+  return <motion.div className="spotlight" style={{ background }} aria-hidden="true" />;
 }

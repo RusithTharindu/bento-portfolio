@@ -1,10 +1,11 @@
 import { Chip } from "@/src/components/atoms/Chip";
+import { MotionCard } from "@/src/components/atoms/MotionCard";
 import { SectionLabel } from "@/src/components/atoms/SectionLabel";
 import { stackGroups } from "@/src/data/portfolio";
 
 export function StackCard() {
   return (
-    <section className="cell c-stack" id="stack">
+    <MotionCard className="cell c-stack" id="stack" delay={0.15}>
       <SectionLabel>Stack</SectionLabel>
       <div className="stack-list">
         {stackGroups.map(([category, items]) => (
@@ -20,6 +21,6 @@ export function StackCard() {
           </div>
         ))}
       </div>
-    </section>
+    </MotionCard>
   );
 }

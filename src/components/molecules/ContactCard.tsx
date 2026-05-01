@@ -1,10 +1,11 @@
+import { MotionCard } from "@/src/components/atoms/MotionCard";
 import { SectionLabel } from "@/src/components/atoms/SectionLabel";
 import { SocialLink } from "@/src/components/atoms/SocialLink";
 import { socials } from "@/src/data/portfolio";
 
 export function ContactCard() {
   return (
-    <section className="cell c-contact" id="contact">
+    <MotionCard className="cell c-contact" id="contact" delay={0.45}>
       <div className="contact">
         <div className="contact-left">
           <SectionLabel>Get in touch</SectionLabel>
@@ -26,6 +27,6 @@ export function ContactCard() {
           </div>
         </div>
       </div>
-    </section>
+    </MotionCard>
   );
 }

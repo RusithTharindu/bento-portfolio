@@ -1,13 +1,15 @@
+import { MotionCard } from "@/src/components/atoms/MotionCard";
+import { MotionPulse } from "@/src/components/atoms/MotionPulse";
 import { SectionLabel } from "@/src/components/atoms/SectionLabel";
 
 export function StatusCard() {
   return (
-    <section className="cell c-status" id="about">
+    <MotionCard className="cell c-status" id="about" delay={0.05}>
       <div className="status">
         <div>
           <SectionLabel>Status</SectionLabel>
           <div className="status-avail">
-            <span className="pulse" />
+            <MotionPulse />
             Available · May 2026
           </div>
         </div>
@@ -30,6 +32,6 @@ export function StatusCard() {
           </div>
         </div>
       </div>
-    </section>
+    </MotionCard>
   );
 }
