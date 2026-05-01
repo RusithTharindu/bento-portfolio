@@ -38,7 +38,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         variants={{
           hover: {
             x: 4,
-            color: "var(--accent)",
+            color: "#f06a5f",
           },
         }}
         transition={{ duration: 0.25 }}

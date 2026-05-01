@@ -2,7 +2,7 @@ import { ActivityGrid } from "@/src/components/atoms/ActivityGrid";
 import { MotionCard } from "@/src/components/atoms/MotionCard";
 import { SectionLabel } from "@/src/components/atoms/SectionLabel";
 
-const scaleColors = ["#18181b", "#2a1a1c", "#4a1f22", "#7a2a2e", "oklch(0.72 0.18 20)"];
+const scaleColors = ["#18181b", "#2a1a1c", "#4a1f22", "#7a2a2e", "#f06a5f"];
 
 export function ActivityCard() {
   return (
