@@ -718,6 +718,61 @@ a {
   width: 10px;
 }
 
+.gh-repos {
+  border-top: 1px solid var(--border);
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 14px;
+}
+
+.gh-repos-title {
+  color: var(--text-3);
+  font-family: var(--ff-mono), ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gh-repo {
+  align-items: center;
+  color: inherit;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 8px minmax(0, 1fr) auto;
+  text-decoration: none;
+}
+
+.gh-repo-lang {
+  border-radius: 50%;
+  height: 8px;
+  width: 8px;
+}
+
+.gh-repo-main {
+  display: grid;
+  min-width: 0;
+}
+
+.gh-repo-name {
+  color: var(--text);
+  font-size: 13px;
+}
+
+.gh-repo-desc,
+.gh-repo-empty,
+.gh-repo-meta {
+  color: var(--text-2);
+  font-family: var(--ff-mono), ui-monospace, monospace;
+  font-size: 10.5px;
+}
+
+.gh-repo-desc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .term {
   font-family: var(--ff-mono), ui-monospace, monospace;
   font-size: 13px;

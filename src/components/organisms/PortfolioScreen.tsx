@@ -12,8 +12,11 @@ import { StatsCard } from "@/src/components/molecules/StatsCard";
 import { StatusCard } from "@/src/components/molecules/StatusCard";
 import { TerminalCard } from "@/src/components/molecules/TerminalCard";
 import { TimelineCard } from "@/src/components/molecules/TimelineCard";
+import { getGitHubActivity } from "@/src/lib/github";
 
-export function PortfolioScreen() {
+export async function PortfolioScreen() {
+  const activity = await getGitHubActivity();
+
   return (
     <>
       <Spotlight />
@@ -26,7 +29,7 @@ export function PortfolioScreen() {
           <StackCard />
           <StatsCard />
           <ProjectsCard />
-          <ActivityCard />
+          <ActivityCard activity={activity} />
           <TerminalCard />
           <TimelineCard />
           <EducationCard />
