@@ -174,7 +174,7 @@ function runCommand(rawCommand: string): CommandResult {
           ),
         ),
         blank(),
-        line("Run `project nova` or `open nova` for details.", "dim"),
+        line("Run `project passgo` or `open passgo` for details.", "dim"),
       ],
     };
   }
@@ -318,7 +318,7 @@ export function TerminalMode({ isActive, onExit }: TerminalModeProps) {
   const historyIndex = useRef<number | null>(null);
   const nextId = useRef(1);
 
-  const sidebarProjects = useMemo(() => projects.slice(0, 4), []);
+  const sidebarProjects = useMemo(() => projects, []);
 
   useEffect(() => {
     if (isActive) {

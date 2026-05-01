@@ -8,7 +8,7 @@ export function ProjectPreview({ project }: ProjectPreviewProps) {
   return (
     <div className="preview">
       <span>
-        {project.number} · {project.shortTitle.toUpperCase()} - PREVIEW
+        {project.number} / {project.shortTitle.toUpperCase()} - PREVIEW
       </span>
     </div>
   );
