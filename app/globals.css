@@ -1153,6 +1153,10 @@ a {
   content: "./";
 }
 
+.terminal-tree .terminal-route::before {
+  content: "";
+}
+
 .terminal-side-stat {
   border-top: 1px solid var(--border);
   display: flex;

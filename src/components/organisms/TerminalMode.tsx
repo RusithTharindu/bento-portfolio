@@ -1,8 +1,21 @@
 "use client";
 
-import { FormEvent, KeyboardEvent, useEffect, useMemo, useRef, useState } from "react";
+import {
+  FormEvent,
+  KeyboardEvent,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { projects } from "@/src/data/projects";
-import { education, socials, stackGroups, stats, timeline } from "@/src/data/portfolio";
+import {
+  education,
+  socials,
+  stackGroups,
+  stats,
+  timeline,
+} from "@/src/data/portfolio";
 
 type TerminalTone = "accent" | "dim" | "error" | "success" | "text";
 
@@ -54,13 +67,24 @@ const commandSummaries: Array<[string, string]> = [
 ];
 
 const welcomeLines: TerminalLine[] = [
-  { kind: "text", text: "Rusith Tharindu Thushan interactive shell", tone: "accent" },
-  { kind: "text", text: "Software engineer focused on secure, polished web systems." },
+  {
+    kind: "text",
+    text: "Rusith Tharindu Thushan interactive shell",
+    tone: "accent",
+  },
+  {
+    kind: "text",
+    text: "Software engineer focused on secure, polished web systems.",
+  },
   { kind: "blank" },
   { kind: "text", text: "Run `help` to list commands.", tone: "dim" },
 ];
 
-function line(text: string, tone: TerminalTone = "text", href?: string): TerminalLine {
+function line(
+  text: string,
+  tone: TerminalTone = "text",
+  href?: string,
+): TerminalLine {
   return {
     href,
     kind: "text",
@@ -89,7 +113,9 @@ function buildOpenTargets() {
     ["linkedin", "https://www.linkedin.com/in/rusith-tharindu-thushan/"],
     ["email", "mailto:rusith.tharindu.thushan@gmail.com"],
     ["mail", "mailto:rusith.tharindu.thushan@gmail.com"],
-    ...projects.map((project) => [project.slug, `/projects/${project.slug}`] as const),
+    ...projects.map(
+      (project) => [project.slug, `/projects/${project.slug}`] as const,
+    ),
   ]);
 }
 
@@ -145,7 +171,9 @@ function runCommand(rawCommand: string): CommandResult {
   if (["skills", "stack"].includes(normalized)) {
     const groupQuery = args.join(" ").toLowerCase();
     const groups = groupQuery
-      ? stackGroups.filter(([group]) => group.toLowerCase().includes(groupQuery))
+      ? stackGroups.filter(([group]) =>
+          group.toLowerCase().includes(groupQuery),
+        )
       : stackGroups;
 
     if (!groups.length) {
@@ -187,19 +215,28 @@ function runCommand(rawCommand: string): CommandResult {
       return {
         lines: [
           line("Project not found.", "error"),
-          line(`Available: ${projects.map((item) => item.slug).join(", ")}`, "dim"),
+          line(
+            `Available: ${projects.map((item) => item.slug).join(", ")}`,
+            "dim",
+          ),
         ],
       };
     }
 
     return {
       lines: [
-        line(`${project.title} [${project.status}]`, "accent", `/projects/${project.slug}`),
+        line(
+          `${project.title} [${project.status}]`,
+          "accent",
+          `/projects/${project.slug}`,
+        ),
         line(project.lede, "dim"),
         blank(),
         line(`role: ${project.role}`),
         line(`stack: ${project.stack.join(", ")}`, "dim"),
-        ...project.highlights.slice(0, 3).map((highlight) => line(`- ${highlight}`, "dim")),
+        ...project.highlights
+          .slice(0, 3)
+          .map((highlight) => line(`- ${highlight}`, "dim")),
       ],
     };
   }
@@ -235,9 +272,17 @@ function runCommand(rawCommand: string): CommandResult {
     return {
       lines: [
         line("contact", "accent"),
-        line("  email     rusith.tharindu.thushan@gmail.com", "dim", "mailto:rusith.tharindu.thushan@gmail.com"),
+        line(
+          "  email     rusith.tharindu.thushan@gmail.com",
+          "dim",
+          "mailto:rusith.tharindu.thushan@gmail.com",
+        ),
         ...socials.map((social) =>
-          line(`  ${social.label.padEnd(9, " ")} ${social.href}`, "dim", social.href),
+          line(
+            `  ${social.label.padEnd(9, " ")} ${social.href}`,
+            "dim",
+            social.href,
+          ),
         ),
       ],
     };
@@ -248,7 +293,9 @@ function runCommand(rawCommand: string): CommandResult {
 
     if (!target) {
       return {
-        lines: [line("Usage: open <github|linkedin|email|project-slug>", "error")],
+        lines: [
+          line("Usage: open <github|linkedin|email|project-slug>", "error"),
+        ],
       };
     }
 
@@ -260,7 +307,11 @@ function runCommand(rawCommand: string): CommandResult {
       };
     }
 
-    window.open(href, href.startsWith("/") ? "_self" : "_blank", "noopener,noreferrer");
+    window.open(
+      href,
+      href.startsWith("/") ? "_self" : "_blank",
+      "noopener,noreferrer",
+    );
 
     return {
       lines: [line(`Opening ${target}...`, "success", href)],
@@ -288,7 +339,11 @@ function Prompt() {
 
 function TerminalLineView({ item }: { item: TerminalLine }) {
   if (item.kind === "blank") {
-    return <div className="tm-line" aria-hidden="true">&nbsp;</div>;
+    return (
+      <div className="tm-line" aria-hidden="true">
+        &nbsp;
+      </div>
+    );
   }
 
   const className = item.tone ? `tm-line tone-${item.tone}` : "tm-line";
@@ -437,7 +492,11 @@ export function TerminalMode({ isActive, onExit }: TerminalModeProps) {
               <span>experience.log</span>
               <span>education.txt</span>
               {sidebarProjects.map((project) => (
-                <a href={`/projects/${project.slug}`} key={project.slug}>
+                <a
+                  className="terminal-route"
+                  href={`/projects/${project.slug}`}
+                  key={project.slug}
+                >
                   projects/{project.slug}
                 </a>
               ))}
@@ -462,7 +521,10 @@ export function TerminalMode({ isActive, onExit }: TerminalModeProps) {
                     </div>
                   ) : null}
                   {entry.lines.map((item, index) => (
-                    <TerminalLineView item={item} key={`${entry.id}-${index}`} />
+                    <TerminalLineView
+                      item={item}
+                      key={`${entry.id}-${index}`}
+                    />
                   ))}
                 </div>
               ))}
