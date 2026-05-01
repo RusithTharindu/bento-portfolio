@@ -1,8 +1,11 @@
 import { MotionCard } from "@/src/components/atoms/MotionCard";
 import { MotionPulse } from "@/src/components/atoms/MotionPulse";
 import { SectionLabel } from "@/src/components/atoms/SectionLabel";
+import { getCurrentMonthYear } from "@/src/lib/date";
 
 export function StatusCard() {
+  const currentMonthYear = getCurrentMonthYear();
+
   return (
     <MotionCard className="cell c-status" id="about" delay={0.05}>
       <div className="status">
@@ -10,7 +13,7 @@ export function StatusCard() {
           <SectionLabel>Status</SectionLabel>
           <div className="status-avail">
             <MotionPulse />
-            Available · May 2026
+            Available &middot; {currentMonthYear}
           </div>
         </div>
         <div className="status-msg">
@@ -20,7 +23,7 @@ export function StatusCard() {
         <div className="status-meta">
           <div className="row">
             <b>Location</b>
-            <span>Remote · GMT+5:30</span>
+            <span>Remote &middot; GMT+5:30</span>
           </div>
           <div className="row">
             <b>Response</b>
@@ -28,7 +31,7 @@ export function StatusCard() {
           </div>
           <div className="row">
             <b>Stack pref</b>
-            <span>TS · Node · JVM</span>
+            <span>TS &middot; Node &middot; JVM</span>
           </div>
         </div>
       </div>

@@ -12,9 +12,17 @@ export function SocialLink({
   children,
 }: SocialLinkProps) {
   const className = variant ? `social ${variant}` : "social";
+  const isExternal = href.startsWith("http");
 
   return (
-    <a href={href} className={className} aria-label={label} title={variant === "icon" ? label : undefined}>
+    <a
+      href={href}
+      className={className}
+      aria-label={label}
+      title={variant === "icon" ? label : undefined}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noreferrer" : undefined}
+    >
       {children ?? label.slice(0, 1)}
     </a>
   );

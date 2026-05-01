@@ -70,10 +70,29 @@ export const education: EducationItem[] = [
 ];
 
 export const socials = [
-  "GitHub",
-  "LinkedIn",
-  "X",
-  "Medium",
-  "Bluesky",
-  "Reddit",
+  {
+    label: "GitHub",
+    icon: "github",
+    href: "https://github.com/RusithTharindu",
+  },
+  {
+    label: "LinkedIn",
+    icon: "linkedin",
+    href: "https://www.linkedin.com/in/rusith-tharindu-thushan/",
+  },
+  {
+    label: "X / Twitter",
+    icon: "x",
+    href: "https://x.com/ruziya66_",
+  },
+  {
+    label: "Medium",
+    icon: "medium",
+    href: "https://medium.com/@devrusith",
+  },
+  {
+    label: "Bluesky",
+    icon: "bluesky",
+    href: "https://bsky.app/profile/rusiththarindu.bsky.social",
+  },
 ] as const;

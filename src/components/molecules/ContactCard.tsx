@@ -1,5 +1,6 @@
 import { MotionCard } from "@/src/components/atoms/MotionCard";
 import { SectionLabel } from "@/src/components/atoms/SectionLabel";
+import { SocialIcon } from "@/src/components/atoms/SocialIcon";
 import { SocialLink } from "@/src/components/atoms/SocialLink";
 import { socials } from "@/src/data/portfolio";
 
@@ -16,13 +17,15 @@ export function ContactCard() {
         </div>
         <div className="contact-right">
           <SocialLink href="mailto:hello@rusith.dev" label="Email" variant="primary">
-            <span aria-hidden="true">mail</span>
+            <SocialIcon name="mail" size={14} />
             hello@rusith.dev
             <span aria-hidden="true">-&gt;</span>
           </SocialLink>
           <div className="socials">
-            {socials.map((name) => (
-              <SocialLink label={name} variant="icon" key={name} />
+            {socials.map((social) => (
+              <SocialLink href={social.href} label={social.label} variant="icon" key={social.label}>
+                <SocialIcon name={social.icon} />
+              </SocialLink>
             ))}
           </div>
         </div>

@@ -1,12 +1,15 @@
 import { MotionCard } from "@/src/components/atoms/MotionCard";
+import { getCurrentYear } from "@/src/lib/date";
 
 export function HeroCard() {
+  const currentYear = getCurrentYear();
+
   return (
     <MotionCard className="cell c-hero">
       <div className="hero">
         <div className="hero-top">
-          <div className="hero-meta">- PORTFOLIO / 2026</div>
-          <div className="hero-meta">INDEX · 01</div>
+          <div className="hero-meta">- PORTFOLIO / {currentYear}</div>
+          <div className="hero-meta">INDEX &middot; 01</div>
         </div>
         <div>
           <h1 className="hero-title">
