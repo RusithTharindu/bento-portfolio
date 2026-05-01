@@ -17,27 +17,15 @@ export const stats: Array<[string, string, string]> = [
 export const timeline: Array<[string, string, string, string]> = [
   [
     "2024 - PRESENT",
-    "Senior Software Engineer",
-    "stealth startup",
-    "Leading platform work on a distributed data product. Shipping TypeScript services and Next.js surfaces.",
+    "Software Engineer",
+    "Rootcode",
+    "Develop and maintain high-performance web applications using React and Node.js.",
   ],
   [
     "2022 - 2024",
     "Software Engineer",
-    "fintech (remote)",
-    "Built ledger primitives and reconciliation pipelines in Java / Spring Boot.",
-  ],
-  [
-    "2020 - 2022",
-    "Full-stack Engineer",
-    "agency",
-    "Delivered 12+ client products across React, Node and NestJS stacks.",
-  ],
-  [
-    "2019 - 2020",
-    "Junior Engineer",
-    "first role",
-    "Wrote my first production code. Learned git the hard way.",
+    "Flyxto",
+    "Build scalable web applications using React and Node.js.",
   ],
 ];
 
@@ -88,4 +76,4 @@ export const socials = [
   "Medium",
   "Bluesky",
   "Reddit",
-];
+] as const;
