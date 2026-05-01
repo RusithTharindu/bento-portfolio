@@ -8,6 +8,8 @@ import {
   useRef,
   useState,
 } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { projects } from "@/src/data/projects";
 import {
   education,
@@ -42,7 +44,8 @@ type TerminalModeProps = {
 };
 
 type CommandResult = {
-  action?: "clear" | "exit";
+  action?: "clear" | "exit" | "navigate";
+  href?: string;
   lines: TerminalLine[];
 };
 
@@ -307,11 +310,15 @@ function runCommand(rawCommand: string): CommandResult {
       };
     }
 
-    window.open(
-      href,
-      href.startsWith("/") ? "_self" : "_blank",
-      "noopener,noreferrer",
-    );
+    if (href.startsWith("/")) {
+      return {
+        action: "navigate",
+        href,
+        lines: [line(`Opening ${target}...`, "success")],
+      };
+    }
+
+    window.open(href, "_blank", "noopener,noreferrer");
 
     return {
       lines: [line(`Opening ${target}...`, "success", href)],
@@ -349,8 +356,20 @@ function TerminalLineView({ item }: { item: TerminalLine }) {
   const className = item.tone ? `tm-line tone-${item.tone}` : "tm-line";
 
   if (item.href) {
+    if (item.href.startsWith("/")) {
+      return (
+        <Link className={className} href={item.href}>
+          {item.text}
+        </Link>
+      );
+    }
     return (
-      <a className={className} href={item.href}>
+      <a
+        className={className}
+        href={item.href}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
         {item.text}
       </a>
     );
@@ -360,6 +379,7 @@ function TerminalLineView({ item }: { item: TerminalLine }) {
 }
 
 export function TerminalMode({ isActive, onExit }: TerminalModeProps) {
+  const router = useRouter();
   const [entries, setEntries] = useState<TerminalEntry[]>([
     {
       id: 0,
@@ -422,6 +442,10 @@ export function TerminalMode({ isActive, onExit }: TerminalModeProps) {
 
     if (result.action === "exit") {
       window.setTimeout(onExit, 260);
+    }
+
+    if (result.action === "navigate" && result.href) {
+      window.setTimeout(() => router.push(result.href!), 260);
     }
   }
 
@@ -492,13 +516,13 @@ export function TerminalMode({ isActive, onExit }: TerminalModeProps) {
               <span>experience.log</span>
               <span>education.txt</span>
               {sidebarProjects.map((project) => (
-                <a
+                <Link
                   className="terminal-route"
                   href={`/projects/${project.slug}`}
                   key={project.slug}
                 >
-                  projects/{project.slug}
-                </a>
+                  ./projects/{project.slug}
+                </Link>
               ))}
             </div>
             <div className="terminal-side-stat">
