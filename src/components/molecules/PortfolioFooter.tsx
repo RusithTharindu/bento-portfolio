@@ -5,7 +5,7 @@ export function PortfolioFooter() {
     <Footer
       right={
         <>
-          v1.0 · <span className="live-dot">●</span> LIVE
+          v1.0 &middot; <span className="live-dot">&bull;</span> LIVE
         </>
       }
     />

@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import { useMemo } from "react";
 
-const palette = ["#18181b", "#2a1a1c", "#4a1f22", "#7a2a2e", "oklch(0.72 0.18 20)"];
+const palette = ["#18181b", "#2a1a1c", "#4a1f22", "#7a2a2e", "#f06a5f"];
 
 function createActivityCells() {
   const cells = [];

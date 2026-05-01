@@ -8,9 +8,9 @@ export function MotionPulse() {
       className="pulse"
       animate={{
         boxShadow: [
-          "0 0 0 0 color-mix(in oklab, var(--ok), transparent 40%)",
-          "0 0 0 10px color-mix(in oklab, var(--ok), transparent 100%)",
-          "0 0 0 0 color-mix(in oklab, var(--ok), transparent 100%)",
+          "0 0 0 0 rgba(78, 211, 122, 0.6)",
+          "0 0 0 10px rgba(78, 211, 122, 0)",
+          "0 0 0 0 rgba(78, 211, 122, 0)",
         ],
       }}
       transition={{
