@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 type TerminalLine = {
   prefix?: string;
@@ -35,96 +35,11 @@ const terminalScript: TerminalLine[] = [
   },
 ];
 
-const palette = ["#18181b", "#2a1a1c", "#4a1f22", "#7a2a2e", "oklch(0.72 0.18 20)"];
-
 function escapeHtml(value: string) {
   return value.replace(/&/g, "&amp;").replace(/</g, "&lt;");
 }
 
-function createActivityCells() {
-  const cells = [];
-  let seed = 42;
-  const rnd = () => {
-    seed = (seed * 9301 + 49297) % 233280;
-    return seed / 233280;
-  };
-
-  for (let day = 0; day < 7; day += 1) {
-    for (let week = 0; week < 26; week += 1) {
-      const random = rnd();
-      let level = 0;
-      if (random > 0.35) level = 1;
-      if (random > 0.55) level = 2;
-      if (random > 0.78) level = 3;
-      if (random > 0.92) level = 4;
-      if ((day === 0 || day === 6) && random < 0.7) {
-        level = Math.max(0, level - 1);
-      }
-      cells.push({
-        id: `${week}-${day}`,
-        background: palette[level],
-        delay: `${(week * 7 + day) * 6}ms`,
-        gridColumn: week + 1,
-        gridRow: day + 1,
-      });
-    }
-  }
-
-  return cells;
-}
-
-export function Spotlight() {
-  useEffect(() => {
-    const spotlight = document.querySelector<HTMLElement>(".spotlight");
-
-    const updatePointer = (event: PointerEvent) => {
-      spotlight?.style.setProperty("--mx", `${event.clientX}px`);
-      spotlight?.style.setProperty("--my", `${event.clientY}px`);
-    };
-
-    const updateCellGlow = (event: PointerEvent) => {
-      const cell = (event.target as HTMLElement).closest<HTMLElement>(".cell");
-      if (!cell) return;
-
-      const rect = cell.getBoundingClientRect();
-      cell.style.setProperty("--cx", `${event.clientX - rect.left}px`);
-      cell.style.setProperty("--cy", `${event.clientY - rect.top}px`);
-    };
-
-    window.addEventListener("pointermove", updatePointer);
-    document.addEventListener("pointermove", updateCellGlow);
-
-    return () => {
-      window.removeEventListener("pointermove", updatePointer);
-      document.removeEventListener("pointermove", updateCellGlow);
-    };
-  }, []);
-
-  return <div className="spotlight" aria-hidden="true" />;
-}
-
-export function ActivityGrid() {
-  const cells = useMemo(() => createActivityCells(), []);
-
-  return (
-    <div className="gh-grid" aria-hidden="true">
-      {cells.map((cell) => (
-        <span
-          className="gh-cell"
-          key={cell.id}
-          style={{
-            background: cell.background,
-            animationDelay: cell.delay,
-            gridColumn: cell.gridColumn,
-            gridRow: cell.gridRow,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
-export function Terminal() {
+export function TerminalOutput() {
   const [lines, setLines] = useState<string[]>([]);
 
   useEffect(() => {
@@ -167,6 +82,7 @@ export function Terminal() {
             setLine(index, `${line.prefix}${escapeHtml(typed)}`);
             await sleep(30 + Math.random() * 30);
           }
+
           if (line.cursor) {
             setLine(index, `${line.prefix}${escapeHtml(typed)}<span class="term-cursor"></span>`);
           }
