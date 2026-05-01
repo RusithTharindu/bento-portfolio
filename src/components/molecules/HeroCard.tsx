@@ -12,19 +12,21 @@ export function HeroCard() {
           <div className="hero-meta">INDEX &middot; 01</div>
         </div>
         <div>
-          <h1 className="hero-title">
-            Rusith Tharindu
-            <br />
-            Thushan.
-            <br />
+          <h1 className="hero-title" style={{ gap: "15px" }}>
+            <span className="hero-title-group">
+              <span>Rusith Tharindu</span>
+              <span>Thushan.</span>
+            </span>
             <em>Software engineer</em>
-            <br />
-            building resilient systems.
+            <span className="hero-title-group">
+              <span>Full-stack by trade,</span>
+              <span>security-minded by study.</span>
+            </span>
           </h1>
           <p className="hero-sub">
-            I design and ship full-stack products end-to-end - from <b>TypeScript</b>{" "}
-            front-ends to <b>Spring Boot</b> services. Currently focused on
-            composable architectures, clean APIs, and fast teams.
+            I build products across the full stack — clean APIs, tight
+            frontends, and the invisible layer in between. Currently deepening
+            into security while shipping production software that holds up.
           </p>
         </div>
       </div>

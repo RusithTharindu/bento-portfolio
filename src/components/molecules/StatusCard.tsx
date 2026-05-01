@@ -13,24 +13,25 @@ export function StatusCard() {
           <SectionLabel>Status</SectionLabel>
           <div className="status-avail">
             <MotionPulse />
-            Available &middot; {currentMonthYear}
+            Software Engineer &middot; {currentMonthYear}
           </div>
         </div>
         <div className="status-msg">
-          Open to <em>full-time</em> and select <em>contract</em> work on product
-          teams that value craft.
+          Shipping production software at <em>Rootcode</em> - and thinking
+          seriously about what secure systems actually look like from the inside
+          out.
         </div>
         <div className="status-meta">
           <div className="row">
+            <b>Company</b>
+            <span>Rootcode</span>
+          </div>
+          <div className="row">
             <b>Location</b>
-            <span>Remote &middot; GMT+5:30</span>
+            <span>Sri Lanka &middot; GMT+5:30</span>
           </div>
           <div className="row">
-            <b>Response</b>
-            <span>Within 24 hours</span>
-          </div>
-          <div className="row">
-            <b>Stack pref</b>
+            <b>Stack</b>
             <span>TS &middot; Node &middot; JVM</span>
           </div>
         </div>

@@ -7,12 +7,18 @@ export function AboutCard() {
       <div className="about">
         <SectionLabel>About</SectionLabel>
         <p>
-          <strong>I ship software that lasts.</strong> Six years deep in
-          product engineering - mostly the quiet middle layer where data meets
-          UI and decisions compound. I care about boring correctness, fast
-          feedback loops, and teammates who argue well.
+          I work across the stack and care about the seams —
+          <strong>
+            where the API meets the UI, where trust assumptions break, where
+            abstractions leak
+          </strong>
+          . Currently pursuing a Master's in Cyber Security, which mostly means
+          I've started reading every system like something will go wrong.
         </p>
-        <p>Off-hours: reading type systems, running long, and tuning small interfaces.</p>
+        <p>
+          I'm at my best collaborating on hard problems with people who have
+          opinions. Good software is a team argument that ends well.
+        </p>
       </div>
     </MotionCard>
   );

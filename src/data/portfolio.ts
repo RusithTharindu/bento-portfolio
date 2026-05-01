@@ -8,10 +8,10 @@ export const stackGroups: Array<[string, string[]]> = [
 ];
 
 export const stats: Array<[string, string, string]> = [
-  ["06", "yr", "Shipping in prod"],
+  ["2.5", "yr", "Shipping in prod"],
   ["24", "+", "Projects delivered"],
   ["1.2k", "up", "Commits / year"],
-  ["11", "*", "OSS contributions"],
+  ["02", "*", "OSS contributions"],
 ];
 
 export const timeline: Array<[string, string, string, string]> = [

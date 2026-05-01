@@ -373,12 +373,20 @@ a {
 
 .hero-title {
   color: var(--text);
+  display: flex;
+  flex-direction: column;
   font-family: var(--ff-serif), Georgia, serif;
   font-size: clamp(40px, 4.6vw, 62px);
+  gap: clamp(8px, 0.9vw, 14px);
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1;
   margin: 0;
+}
+
+.hero-title-group {
+  display: flex;
+  flex-direction: column;
 }
 
 .hero-title em,
@@ -387,6 +395,10 @@ a {
 .p-title em {
   color: var(--text-2);
   font-style: italic;
+}
+
+.hero-title em {
+  color: var(--accent);
 }
 
 .hero-sub {
