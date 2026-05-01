@@ -58,11 +58,13 @@ The Activity section can render real GitHub contribution and repository data thr
 Create a local `.env.local` file:
 
 ```bash
-GITHUB_USERNAME=your-github-username
-GITHUB_TOKEN=your-read-only-github-token
+GH_USERNAME=your-github-username
+GH_TOKEN=your-read-only-github-token
 ```
 
-`GITHUB_TOKEN` is read only on the server. Do not expose it as a `NEXT_PUBLIC_` variable.
+`GH_TOKEN` is read only on the server. Do not expose it as a `NEXT_PUBLIC_` variable.
+
+For GitHub Pages, add the same values as repository or environment secrets. The deploy workflow passes them into the build job because the activity data is baked into the static site during `next build`.
 
 If either value is missing, the Activity section falls back to sample data so local builds and CI still pass.
 

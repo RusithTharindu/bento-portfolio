@@ -28,6 +28,9 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GH_TOKEN || secrets.GITHUB_TOKEN }}
+      GH_USERNAME: ${{ secrets.GH_USERNAME || secrets.GITHUB_USERNAME }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -51,7 +54,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -93,6 +96,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          GH_USERNAME: ${{ secrets.GH_USERNAME }}

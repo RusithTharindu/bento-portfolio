@@ -169,8 +169,8 @@ function createFallbackActivity(): GitHubActivity {
 }
 
 export async function getGitHubActivity(): Promise<GitHubActivity> {
-  const token = process.env.GH_TOKEN;
-  const username = process.env.GH_USERNAME;
+  const token = process.env.GH_TOKEN ?? process.env.GITHUB_TOKEN;
+  const username = process.env.GH_USERNAME ?? process.env.GITHUB_USERNAME;
 
   if (!token || !username) {
     return createFallbackActivity();

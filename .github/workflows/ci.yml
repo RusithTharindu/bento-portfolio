@@ -31,4 +31,7 @@ jobs:
         run: npm run typecheck
 
       - name: Build
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN || secrets.GITHUB_TOKEN }}
+          GH_USERNAME: ${{ secrets.GH_USERNAME || secrets.GITHUB_USERNAME }}
         run: npm run build
