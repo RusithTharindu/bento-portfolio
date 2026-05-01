@@ -93,6 +93,16 @@ a {
   padding: 6px 4px 28px;
 }
 
+.portfolio-nav {
+  display: block;
+}
+
+.nav-main {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
 .project-nav {
   padding-bottom: 40px;
 }
@@ -160,6 +170,38 @@ a {
     color 0.2s,
     transform 0.2s;
   width: 42px;
+}
+
+.nav-menu-toggle {
+  align-items: center;
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.018);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-2);
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s,
+    transform 0.2s;
+  width: 40px;
+}
+
+.nav-menu-toggle:hover,
+.nav-menu-toggle[aria-expanded="true"] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.nav-menu-toggle:hover {
+  transform: translateY(-1px);
+}
+
+.mobile-nav-panel {
+  display: none;
 }
 
 .nav-terminal:hover,
@@ -298,6 +340,10 @@ a {
 }
 
 @media (min-width: 1025px) {
+  .nav-menu-toggle {
+    display: none;
+  }
+
   .portfolio-stage {
     perspective: 1600px;
   }
@@ -1824,6 +1870,10 @@ a.tm-line:hover {
 }
 
 @media (min-width: 721px) and (max-width: 1024px) {
+  .nav-menu-toggle {
+    display: none;
+  }
+
   .nav-terminal,
   .terminal-mode {
     display: none;
@@ -2035,11 +2085,62 @@ a.tm-line:hover {
   }
 
   .nav-actions {
-    gap: 0;
+    gap: 10px;
   }
 
   .nav-terminal {
     display: none;
+  }
+
+  .mobile-nav-panel {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 55%),
+      var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    display: grid;
+    gap: 4px;
+    margin-top: 14px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 8px;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition:
+      max-height 0.24s ease,
+      opacity 0.2s ease,
+      padding 0.24s ease,
+      transform 0.24s ease;
+  }
+
+  .mobile-nav-panel.is-open {
+    max-height: 260px;
+    opacity: 1;
+    padding: 8px;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .mobile-nav-panel a {
+    border-radius: 10px;
+    color: var(--text-2);
+    font-family: var(--ff-mono), ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    padding: 11px 12px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+      background 0.2s,
+      color 0.2s;
+  }
+
+  .mobile-nav-panel a:hover,
+  .mobile-nav-panel a:focus-visible {
+    background: rgba(255, 255, 255, 0.035);
+    color: var(--accent);
+    outline: none;
   }
 
   .terminal-mode-window {
