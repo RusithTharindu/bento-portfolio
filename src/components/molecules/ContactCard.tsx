@@ -13,17 +13,28 @@ export function ContactCard() {
           <div className="contact-h">
             Let&apos;s build something <em>worth shipping.</em>
           </div>
-          <div className="contact-sub">Reply time under 24h. Bring problems, not just specs.</div>
+          <div className="contact-sub">
+            Reply time under 24h. Bring problems, not just specs.
+          </div>
         </div>
         <div className="contact-right">
-          <SocialLink href="mailto:hello@rusith.dev" label="Email" variant="primary">
+          <SocialLink
+            href="mailto:rusiththarindu2@gmail.com"
+            label="Email"
+            variant="primary"
+          >
             <SocialIcon name="mail" size={14} />
-            hello@rusith.dev
+            Contact via Email
             <span aria-hidden="true">-&gt;</span>
           </SocialLink>
           <div className="socials">
             {socials.map((social) => (
-              <SocialLink href={social.href} label={social.label} variant="icon" key={social.label}>
+              <SocialLink
+                href={social.href}
+                label={social.label}
+                variant="icon"
+                key={social.label}
+              >
                 <SocialIcon name={social.icon} />
               </SocialLink>
             ))}
