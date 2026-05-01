@@ -230,6 +230,11 @@ a {
   grid-row: span 5;
 }
 
+.c-education {
+  grid-column: span 12;
+  grid-row: span 3;
+}
+
 .c-contact {
   grid-column: span 12;
   grid-row: span 2;
@@ -768,6 +773,124 @@ a {
   max-width: 42ch;
 }
 
+.education {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+
+.education-head {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.education-note {
+  color: var(--text-3);
+  font-family: var(--ff-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.education-list {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.education-item {
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 112px 1fr;
+  min-width: 0;
+  padding: 18px;
+}
+
+.education-period {
+  color: var(--accent);
+  font-family: var(--ff-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.education-title-row {
+  align-items: flex-start;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.education-state {
+  background: rgba(255, 255, 255, 0.018);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-2);
+  flex: 0 0 auto;
+  font-family: var(--ff-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  margin-top: 4px;
+  padding: 6px 9px;
+  text-transform: uppercase;
+}
+
+.education-state.current {
+  border-color: color-mix(in oklab, var(--accent), transparent 45%);
+  color: var(--accent);
+}
+
+.education-body {
+  min-width: 0;
+}
+
+.education-body h3 {
+  color: var(--text);
+  font-family: var(--ff-serif), Georgia, serif;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+  margin: 0;
+}
+
+.education-school {
+  color: var(--text);
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.education-body p {
+  color: var(--text-2);
+  font-size: 13.5px;
+  line-height: 1.55;
+  margin: 10px 0 0;
+}
+
+.education-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.education-tag {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-2);
+  font-family: var(--ff-mono), ui-monospace, monospace;
+  font-size: 10.5px;
+  padding: 3px 7px;
+}
+
 .contact {
   align-items: center;
   display: flex;
@@ -1182,6 +1305,15 @@ a {
   .c-contact {
     grid-row: span 2;
   }
+
+  .c-education {
+    grid-column: span 12;
+    grid-row: span 4;
+  }
+
+  .education-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 720px) {
@@ -1215,6 +1347,7 @@ a {
   .c-github,
   .c-terminal,
   .c-timeline,
+  .c-education,
   .c-contact {
     grid-column: span 12;
     grid-row: auto;
@@ -1251,6 +1384,24 @@ a {
     align-items: flex-start;
     flex-direction: column;
     gap: 18px;
+  }
+
+  .education-head,
+  .education-title-row,
+  .education-item {
+    align-items: flex-start;
+  }
+
+  .education-item {
+    grid-template-columns: 1fr;
+  }
+
+  .education-head {
+    flex-direction: column;
+  }
+
+  .education-title-row {
+    flex-direction: column;
   }
 
   .contact-right {

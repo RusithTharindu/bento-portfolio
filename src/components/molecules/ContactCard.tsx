@@ -5,7 +5,7 @@ import { socials } from "@/src/data/portfolio";
 
 export function ContactCard() {
   return (
-    <MotionCard className="cell c-contact" id="contact" delay={0.45}>
+    <MotionCard className="cell c-contact" id="contact" delay={0.5}>
       <div className="contact">
         <div className="contact-left">
           <SectionLabel>Get in touch</SectionLabel>
