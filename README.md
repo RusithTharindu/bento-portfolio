@@ -51,6 +51,21 @@ npm run build
 
 Creates a production Next.js build and validates route/build correctness.
 
+## GitHub Activity
+
+The Activity section can render real GitHub contribution and repository data through the GitHub GraphQL API.
+
+Create a local `.env.local` file:
+
+```bash
+GITHUB_USERNAME=your-github-username
+GITHUB_TOKEN=your-read-only-github-token
+```
+
+`GITHUB_TOKEN` is read only on the server. Do not expose it as a `NEXT_PUBLIC_` variable.
+
+If either value is missing, the Activity section falls back to sample data so local builds and CI still pass.
+
 ## CI
 
 GitHub Actions runs on pull requests and pushes to `main`.
