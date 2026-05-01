@@ -86,4 +86,4 @@ Workflow file: `.github/workflows/ci.yml`
 - Preserve type safety across components, data models, and route props.
 - Keep pages mobile responsive across desktop, tablet, and small screens.
 - Keep `app/` route files thin and delegate screen rendering to organism-level components.
-- Follow the local Next.js guidance in `AGENTS.md` before changing framework-specific behavior.
+- Follow the local Next.js guidance in `AGENTS.md` before changing framework-specific behavior. 
