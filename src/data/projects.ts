@@ -13,7 +13,10 @@ export type Project = {
     after: string;
   };
   lede: string;
-  actions: string[];
+  actions: Array<{
+    label: string;
+    href: string;
+  }>;
   overview: {
     problem: string;
     approach: string;
@@ -26,167 +29,401 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "nova",
+    slug: "passgo",
     number: "01",
-    title: "Project Nova",
-    shortTitle: "Nova",
+    title: "Project PassGo",
+    shortTitle: "PassGo",
     description:
-      "Real-time collaboration platform with CRDT-backed document sync.",
-    tags: ["Next.js", "Node", "WebSocket"],
+      "Digital passport application, renewal, appointment, and document review platform.",
+    tags: ["Next.js", "NestJS", "OCR"],
     year: "2025",
-    status: "SHIPPED",
-    heading: {
-      before: "Project",
-      emphasis: "Nova",
-      after: "collaborative docs, rebuilt.",
-    },
-    lede:
-      "A real-time collaboration platform for distributed engineering teams - CRDT-backed document sync, sub-50ms presence, offline-first editing. Built from the ground up to outlast the meeting it was made in.",
-    actions: ["Live demo", "Source", "Case study"],
-    overview: {
-      problem:
-        "Collaboration tools promise real-time, then fall apart the moment two people edit the same paragraph on a flaky hotel Wi-Fi. We wanted a platform that felt instant, survived disconnects, and never lost a keystroke.",
-      approach:
-        "We built Nova on a custom Yjs-based CRDT layer with a bespoke WebSocket sync protocol. Every client keeps a full local replica, so editing works offline and merges deterministically when the connection returns.",
-    },
-    role:
-      "Lead engineer - 8 months. Owned the sync protocol, the Next.js client, and the authorization model. Worked alongside one designer and two backend engineers.",
-    highlights: [
-      "Sub-50ms presence across three regions via edge-deployed WebSocket relays.",
-      "Offline-first editing - writes persist to IndexedDB and replay on reconnect.",
-      "Conflict-free merges using a lightweight CRDT tuned for prose documents.",
-      "50k MAUs in the first quarter post-launch, p95 input latency under 30ms.",
-    ],
-    stack: ["TypeScript", "Next.js", "Node.js", "WebSocket", "Yjs", "Redis", "Postgres"],
-    glance: [
-      ["Timeline", "Jan 2025 - Aug 2025"],
-      ["Team", "4 engineers, 1 designer"],
-      ["Users", "50,000+ MAU"],
-      ["Latency", "p95 input < 30ms"],
-      ["Status", "Live in production"],
-    ],
-  },
-  {
-    slug: "atlas",
-    number: "02",
-    title: "Atlas Ledger",
-    shortTitle: "Atlas",
-    description:
-      "Double-entry accounting engine for multi-tenant fintech workloads.",
-    tags: ["Java", "Spring", "Postgres"],
-    year: "2023 - 2024",
     status: "LIVE",
     heading: {
-      before: "Atlas",
-      emphasis: "Ledger",
-      after: "correctness at scale.",
+      before: "Project",
+      emphasis: "PassGo",
+      after: "passport services, digitized.",
     },
     lede:
-      "A double-entry accounting engine for multi-tenant fintech workloads. Every debit matches a credit, every transaction is auditable, and every reconciliation run completes before the coffee gets cold.",
-    actions: ["Case study", "Architecture doc"],
+      "A full-stack passport application submission and validation system for Sri Lankan citizens. It brings applicant forms, document uploads, appointment booking, admin review, renewals, notifications, OCR, and cloud file handling into one guided service flow.",
+    actions: [
+      {
+        label: "Live portal",
+        href: "https://passgo-portal.vercel.app",
+      },
+      {
+        label: "Frontend source",
+        href: "https://github.com/RusithTharindu/passgo-fe",
+      },
+      {
+        label: "Backend source",
+        href: "https://github.com/RusithTharindu/passgo-be",
+      },
+    ],
     overview: {
       problem:
-        "Fintech products built on generic ORMs drift out of balance the moment concurrency spikes. We needed a ledger primitive that made double-entry invariants impossible to violate - not a convention, but a hard constraint.",
+        "Passport services depend on long forms, identity documents, scheduled verification, and back-office decisions. The rough edge is not one screen; it is the handoff between citizen submission, document quality, appointment logistics, and administrative review.",
       approach:
-        "Atlas models every financial movement as an immutable, append-only journal entry with paired postings. The database enforces balance at commit time; everything else - statements, reconciliation, reporting - is a projection.",
+        "PassGo splits the product into a polished Next.js applicant/admin portal and a NestJS API. The frontend handles guided application and renewal journeys with TanStack Query, Zustand, document upload flows, and email-triggering API routes; the backend owns JWT role access, Mongo-backed workflows, AWS S3 uploads, throttling, and Google Document AI OCR.",
     },
     role:
-      "Backend engineer - 18 months. Built the journaling core, the reconciliation pipeline, and the multi-tenant isolation layer. Shipped the first regulated-market deployment.",
+      "Full-stack engineer. Designed and implemented the applicant experience, admin workflows, backend modules, document processing path, and cloud integrations across the paired frontend and backend repositories.",
     highlights: [
-      "Zero out-of-balance incidents across 12 months and 40M+ postings.",
-      "Sub-second end-of-day reconciliation across 200k accounts.",
-      "Event-sourced journal with point-in-time replay for audits.",
-      "Multi-tenant with row-level isolation and per-tenant rate limits.",
+      "Applicant portal supports new passport applications, renewals, status tracking, document uploads, and appointment booking.",
+      "Admin workspace covers application queues, appointment handling, status updates, notes, rejection reasons, and reporting surfaces.",
+      "Document pipeline combines AWS S3 storage with Google Document AI OCR for uploaded NIC, birth certificate, passport photo, and supporting files.",
+      "Backend modules cover authentication, users, applications, appointments, renewals, upload services, S3, and role-protected administration.",
     ],
-    stack: ["Java", "Spring Boot", "PostgreSQL", "Kafka", "Flyway", "Docker"],
+    stack: [
+      "TypeScript",
+      "Next.js",
+      "NestJS",
+      "MongoDB",
+      "AWS S3",
+      "Google Document AI",
+      "TanStack Query",
+      "Zustand",
+      "Tailwind CSS",
+    ],
     glance: [
-      ["Timeline", "Jun 2022 - Dec 2023"],
-      ["Team", "3 backend - 1 SRE"],
-      ["Throughput", "2.5k postings/sec peak"],
-      ["Volume", "40M+ postings"],
-      ["Status", "Live in production"],
+      ["Surface", "Applicant portal + admin API"],
+      ["Frontend", "Next.js 15, React 19"],
+      ["Backend", "NestJS 11, MongoDB"],
+      ["Integrations", "AWS S3, Google Document AI"],
+      ["Status", "Live portal / public source"],
     ],
   },
   {
-    slug: "halcyon",
+    slug: "respawn-realm",
+    number: "02",
+    title: "RespawnRealm",
+    shortTitle: "Respawn",
+    description:
+      "Gaming-inspired landing experience with cinematic motion and media-driven sections.",
+    tags: ["Vite", "React", "GSAP"],
+    year: "2024",
+    status: "LIVE",
+    heading: {
+      before: "",
+      emphasis: "RespawnRealm",
+      after: "a gaming world in motion.",
+    },
+    lede:
+      "A gaming-inspired web experience built with Vite, React, Tailwind CSS, GSAP, video assets, custom fonts, and audio. The project leans into visual storytelling: hero video transitions, animated titles, gallery moments, and sharp navigational pacing.",
+    actions: [
+      {
+        label: "Live site",
+        href: "https://respawn-realm.vercel.app",
+      },
+      {
+        label: "Source",
+        href: "https://github.com/RusithTharindu/RespawnRealm",
+      },
+    ],
+    overview: {
+      problem:
+        "A game-themed site has to feel alive from the first frame. Static marketing sections would flatten the concept, while heavy media can easily become janky or unreadable on smaller screens.",
+      approach:
+        "RespawnRealm uses a Vite React build with GSAP and @gsap/react for coordinated animation, Tailwind for responsive composition, and a curated asset set of videos, gallery images, custom fonts, and looped audio to carry the atmosphere without losing structure.",
+    },
+    role:
+      "Frontend engineer. Built the single-page experience, motion system, section choreography, media layout, and deployment pipeline.",
+    highlights: [
+      "Hero and feature sections are driven by multiple MP4 assets for a cinematic first impression.",
+      "GSAP-powered transitions, animated titles, and scroll-aware interactions give the page a game trailer rhythm.",
+      "Custom font and image assets establish a distinct visual language beyond a stock component layout.",
+      "Vite build keeps the project lightweight and fast to iterate while shipping as a static Vercel deployment.",
+    ],
+    stack: ["JavaScript", "React", "Vite", "GSAP", "Tailwind CSS", "Vercel"],
+    glance: [
+      ["Surface", "Interactive landing site"],
+      ["Animation", "GSAP + @gsap/react"],
+      ["Media", "Video, image, audio assets"],
+      ["Build", "Vite + React"],
+      ["Status", "Live / public source"],
+    ],
+  },
+  {
+    slug: "healthharmony",
     number: "03",
-    title: "Halcyon UI",
-    shortTitle: "Halcyon",
+    title: "HealthHarmony",
+    shortTitle: "Health",
     description:
-      "Headless component library - themeable primitives for design systems.",
-    tags: ["React", "TS", "OSS"],
+      "Healthcare management system for patient intake, registration, and appointments.",
+    tags: ["Next.js", "Appwrite", "Twilio"],
     year: "2024",
-    status: "OPEN SOURCE",
+    status: "LIVE",
     heading: {
-      before: "Halcyon",
-      emphasis: "UI",
-      after: "headless primitives.",
+      before: "",
+      emphasis: "HealthHarmony",
+      after: "patient care, coordinated.",
     },
     lede:
-      "A headless React component library for teams tired of fighting their design system. Accessible by default, unopinionated on styling, composable from the inside out.",
-    actions: ["View on GitHub", "Docs", "Playground"],
+      "A healthcare management system built with Next.js, Appwrite, shadcn-style UI primitives, typed forms, and appointment workflows. It guides patients from onboarding into registration and scheduling while giving administrators a protected entry point.",
+    actions: [
+      {
+        label: "Live app",
+        href: "https://health-harmony.vercel.app",
+      },
+      {
+        label: "Source",
+        href: "https://github.com/RusithTharindu/HealthHarmony",
+      },
+    ],
     overview: {
       problem:
-        "Most component libraries force a visual language. Most design systems end up forking them. Halcyon ships the behavior - keyboard nav, focus management, ARIA - and leaves every pixel to you.",
+        "Healthcare intake asks for sensitive, structured information while also needing appointment scheduling and clear confirmation states. The interface has to be calm, validated, and direct enough for patients to complete without friction.",
       approach:
-        "Inspired by Radix, but smaller and more opinionated about composition. Each primitive is a thin state machine paired with an unstyled DOM shape. Bring your own CSS, Tailwind, or whatever comes next.",
+        "HealthHarmony uses server actions with Appwrite for users, patients, appointments, storage, and database records. React Hook Form and Zod shape patient, registration, and appointment forms, while a focused route structure handles onboarding, registration, scheduling, and success flows.",
     },
     role:
-      "Creator and maintainer. Nights-and-weekends project that grew into the internal design system at two companies. Still actively maintained.",
+      "Full-stack developer. Built the patient onboarding flow, registration form system, appointment flow, Appwrite actions, file upload path, and admin access pattern.",
     highlights: [
-      "24 primitives - dialog, menu, combobox, tabs, toast, and more.",
-      "WCAG AA keyboard and screen-reader coverage, verified in CI.",
-      "Tree-shakeable - import one primitive, ship one primitive.",
-      "1.1k GitHub stars, 40+ contributors, weekly npm downloads growing.",
+      "Patient onboarding creates Appwrite users and routes returning users into registration and appointment flows.",
+      "Registration captures medical and identification data with typed validation and file upload support.",
+      "Appointment forms support create, schedule, and cancel modes with doctor selection and validation rules.",
+      "Protected admin path uses a passkey modal pattern, while Sentry and Twilio topics indicate production-minded observability and communication concerns.",
     ],
-    stack: ["TypeScript", "React", "Vite", "Vitest", "Storybook", "tsup"],
+    stack: [
+      "TypeScript",
+      "Next.js",
+      "Appwrite",
+      "React Hook Form",
+      "Zod",
+      "Tailwind CSS",
+      "shadcn-ui",
+      "Sentry",
+      "Twilio",
+    ],
     glance: [
-      ["Started", "Mar 2024"],
-      ["Primitives", "24 shipped"],
-      ["Stars", "1,100+"],
-      ["Bundle", "~6kb per primitive"],
-      ["License", "MIT"],
+      ["Surface", "Patient intake + appointments"],
+      ["Backend", "Appwrite users, database, storage"],
+      ["Forms", "React Hook Form + Zod"],
+      ["UI", "Radix primitives + Tailwind"],
+      ["Status", "Live / public source"],
     ],
   },
   {
-    slug: "relay",
+    slug: "techie-sleuths-2024",
     number: "04",
-    title: "Relay Gateway",
-    shortTitle: "Relay",
+    title: "Techie Sleuths 2024",
+    shortTitle: "Sleuths",
     description:
-      "Edge API gateway with per-tenant rate limits and audit streaming.",
-    tags: ["NestJS", "Redis", "K8s"],
+      "FOSS NSBM puzzle-event frontend with clues, crosswords, auth, and leaderboard play.",
+    tags: ["Next.js", "Redux", "Puzzles"],
     year: "2024",
-    status: "INTERNAL",
+    status: "PUBLIC SOURCE",
     heading: {
-      before: "Relay",
-      emphasis: "Gateway",
-      after: "edge API routing.",
+      before: "Techie",
+      emphasis: "Sleuths",
+      after: "event gameplay on the web.",
     },
     lede:
-      "An edge-deployed API gateway with per-tenant rate limits, request signing, and audit streaming. Sits in front of a polyglot service mesh and makes it look like one clean API.",
-    actions: ["Architecture", "Internal docs"],
+      "A Next.js frontend for FOSS NSBM's Techie Sleuths '24 event. It packages a playful competition experience with registration, login, clue routes, crossword gameplay, scoring actions, leaderboard views, and a themed Mario-inspired visual system.",
+    actions: [
+      {
+        label: "Live site",
+        href: "https://techiesleuths24.fossnsbm.org/",
+      },
+      {
+        label: "Source",
+        href: "https://github.com/fossnsbm/techie-sleuths-24-frontend",
+      },
+    ],
     overview: {
       problem:
-        "The platform grew 12 services in a year across three languages. Clients were wiring up different auth schemes for each. We needed one edge - one set of contracts, one audit log, one place to pull the emergency brake.",
+        "Event sites need more than a landing page when the competition itself happens online. Players need guided entry, puzzles, feedback, scoring, and enough atmosphere to make the experience feel like a game rather than a form.",
       approach:
-        "Relay is a NestJS-based gateway running on edge nodes. Incoming traffic is authenticated, rate-limited per tenant, signed for downstream services, and mirrored to a streaming audit log. Configuration is hot-reloaded from a single source.",
+        "The frontend uses Next.js 14, TypeScript, Tailwind CSS, Redux Toolkit, React Hook Form, Zod, Headless UI, Radix primitives, and Tremor. The route structure covers landing, registration, login, play, clue pages, crossword screens, and leaderboard views, while API modules handle auth, clues, puzzles, and score deductions.",
     },
     role:
-      "Platform engineer - 6 months. Designed the routing and rate-limit model, built the audit pipeline, rolled out across three regions without downtime.",
+      "Frontend contributor. Worked on the event-facing application experience, UI structure, puzzle surfaces, and API-connected gameplay flows.",
     highlights: [
-      "Per-tenant rate limits with burst credits, backed by Redis.",
-      "Audit stream - every request mirrored to Kafka in < 5ms.",
-      "Zero-downtime config reload across 14 edge nodes.",
-      "p99 overhead under 3ms at 8k req/sec per node.",
+      "Competition flow includes registration, login, play state, clue pages, crossword gameplay, and leaderboard pages.",
+      "API modules organize auth, clue retrieval, clue marking, puzzle interaction, and score deduction behavior.",
+      "The visual system uses themed assets, custom fonts, marquees, cards, and responsive layout components.",
+      "Form and UI layers combine React Hook Form, Zod, Headless UI, Radix, Tailwind, and Redux Toolkit.",
     ],
-    stack: ["TypeScript", "NestJS", "Redis", "Kafka", "Kubernetes", "Prometheus"],
+    stack: [
+      "TypeScript",
+      "Next.js",
+      "Redux Toolkit",
+      "Tailwind CSS",
+      "React Hook Form",
+      "Zod",
+      "Headless UI",
+      "Radix UI",
+    ],
     glance: [
-      ["Timeline", "Sep 2024 - Mar 2025"],
-      ["Team", "2 engineers"],
-      ["Throughput", "8k req/sec per node"],
-      ["Regions", "3 - 14 edge nodes"],
-      ["Status", "Internal / live"],
+      ["Organization", "FOSS NSBM"],
+      ["Surface", "Event frontend + puzzle UI"],
+      ["Routes", "Clues, crossword, play, leaderboard"],
+      ["State", "Redux Toolkit"],
+      ["Status", "Live / public source"],
+    ],
+  },
+  {
+    slug: "campus-housing-portal",
+    number: "05",
+    title: "Campus Housing Portal",
+    shortTitle: "Housing",
+    description:
+      "React and Tailwind housing portal for students, landlords, wardens, and admins.",
+    tags: ["React", "Vite", "Maps"],
+    year: "2024",
+    status: "PUBLIC SOURCE",
+    heading: {
+      before: "Campus",
+      emphasis: "Housing",
+      after: "rooms, requests, and reviews.",
+    },
+    lede:
+      "A campus housing web application built with React, Vite, Tailwind CSS, React Router, Google Maps, typed forms, and role-specific screens for students, landlords, wardens, and administrators.",
+    actions: [
+      {
+        label: "Source",
+        href: "https://github.com/RusithTharindu/Campus-Housing-Portal-Frontend",
+      },
+    ],
+    overview: {
+      problem:
+        "Student housing workflows have several actors: students searching for places, landlords managing listings, wardens reviewing requests or properties, and administrators handling user and article records. A single flat interface would make those responsibilities collide.",
+      approach:
+        "The app uses a Vite React structure with separate page groups for hostels, property views, landlord dashboards, warden review screens, and admin management. Shared components cover property cards, maps, request details, accept/reject actions, auth context, image selection, forms, and reusable UI primitives.",
+    },
+    role:
+      "Frontend engineer. Built role-aware portal screens, reusable property and request components, routing, authentication hooks, and responsive Tailwind layouts.",
+    highlights: [
+      "Role-specific routes cover students, landlords, wardens, and administrators.",
+      "Property browsing includes card displays, detailed property views, and Google Maps integration.",
+      "Landlord and warden flows include property management, request details, and accept/reject controls.",
+      "Auth context and login/signup hooks keep access patterns organized across the portal.",
+    ],
+    stack: [
+      "JavaScript",
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "React Router",
+      "Axios",
+      "Google Maps API",
+      "React Hook Form",
+      "Zod",
+    ],
+    glance: [
+      ["Surface", "Campus housing web portal"],
+      ["Users", "Students, landlords, wardens, admins"],
+      ["Maps", "Google Maps property views"],
+      ["Build", "Vite + React"],
+      ["Status", "Public source"],
+    ],
+  },
+  {
+    slug: "purrfectpal",
+    number: "06",
+    title: "PurrfectPal",
+    shortTitle: "Purrfect",
+    description:
+      "React Native pet-care mobile app backed by Firebase auth, Firestore, and storage.",
+    tags: ["React Native", "Firebase", "Mobile"],
+    year: "2024",
+    status: "PUBLIC SOURCE",
+    heading: {
+      before: "",
+      emphasis: "PurrfectPal",
+      after: "pet care in your pocket.",
+    },
+    lede:
+      "A React Native mobile application for pet-focused workflows, built with Firebase authentication, Firestore, Firebase Storage, Google sign-in, native navigation, image picking, Lottie animation, and cross-platform Android/iOS project structure.",
+    actions: [
+      {
+        label: "Source",
+        href: "https://github.com/RusithTharindu/PurrfectPal",
+      },
+    ],
+    overview: {
+      problem:
+        "Pet-care apps need a mobile-first shape: account access, media uploads, persistent records, and quick navigation across everyday actions. The challenge is stitching those features together without losing the native feel.",
+      approach:
+        "PurrfectPal uses React Native 0.73 with Firebase services for authentication, Firestore data, and storage. Navigation is handled through native stack, stack, and bottom-tab navigators, while image picker, dropdowns, checkboxes, radio controls, vector icons, async storage, and Lottie support richer mobile interactions.",
+    },
+    role:
+      "Mobile developer. Built the React Native app foundation, Firebase integration points, navigation structure, and reusable mobile UI flows.",
+    highlights: [
+      "Firebase stack includes app initialization, authentication, Firestore records, and storage support.",
+      "Google sign-in and persistent async storage support smoother account access.",
+      "Navigation combines native stack, stack, and bottom-tab patterns for mobile-friendly flows.",
+      "Image picker, dropdowns, checkboxes, radio buttons, icons, and Lottie round out the native interaction set.",
+    ],
+    stack: [
+      "JavaScript",
+      "TypeScript",
+      "React Native",
+      "Firebase Auth",
+      "Firestore",
+      "Firebase Storage",
+      "React Navigation",
+      "Lottie",
+    ],
+    glance: [
+      ["Surface", "Mobile app"],
+      ["Platform", "Android / iOS"],
+      ["Backend", "Firebase"],
+      ["Navigation", "Tabs + stacks"],
+      ["Status", "Public source"],
+    ],
+  },
+  {
+    slug: "tasktrail",
+    number: "07",
+    title: "TaskTrail",
+    shortTitle: "TaskTrail",
+    description:
+      "Flutter job and task marketplace with auth, listings, requests, profiles, and themes.",
+    tags: ["Flutter", "Firebase", "Dart"],
+    year: "2024",
+    status: "PUBLIC SOURCE",
+    heading: {
+      before: "",
+      emphasis: "TaskTrail",
+      after: "jobs and requests on mobile.",
+    },
+    lede:
+      "A Flutter application for job/task listing workflows, with Firebase-backed authentication and data services, listing creation, job detail views, request management, profile editing, saved ads, settings, and light/dark theme support.",
+    actions: [
+      {
+        label: "Source",
+        href: "https://github.com/RusithTharindu/TaskTrail",
+      },
+    ],
+    overview: {
+      problem:
+        "Small job and service marketplaces need clear mobile flows for posting work, browsing categories, inspecting details, managing requests, and returning to saved listings. Without structure, the app quickly becomes a pile of screens.",
+      approach:
+        "TaskTrail organizes the Flutter codebase into components, models, pages, services, and themes. The visible modules include login/register, home, category views, add job, job detail, request viewing, profile editing, settings, Firestore services, and Firebase options.",
+    },
+    role:
+      "Mobile developer. Built the Flutter app structure, listing flows, authentication screens, Firestore service layer, reusable UI components, and theme system.",
+    highlights: [
+      "Core pages cover splash, login/register, home, categories, add job, job detail, my ads, requests, settings, and data fetching.",
+      "Reusable components include drawer navigation, job tiles, buttons, text fields, tab bars, sliver app bar, and detail views.",
+      "Firebase and Firestore service files support authentication and data access.",
+      "Light and dark theme providers give the mobile UI a configurable visual mode.",
+    ],
+    stack: [
+      "Dart",
+      "Flutter",
+      "Firebase",
+      "Firestore",
+      "Provider",
+      "Android",
+      "iOS",
+    ],
+    glance: [
+      ["Surface", "Flutter mobile marketplace"],
+      ["Flows", "Jobs, requests, profiles"],
+      ["Backend", "Firebase / Firestore"],
+      ["Themes", "Light + dark mode"],
+      ["Status", "Public source"],
     ],
   },
 ];
