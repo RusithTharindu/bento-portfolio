@@ -1496,10 +1496,10 @@ a {
   }
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 721px) and (max-width: 1024px) {
   .bento {
     gap: 12px;
-    grid-auto-rows: 100px;
+    grid-auto-rows: minmax(88px, auto);
     grid-template-areas:
       "hero hero hero hero hero hero hero hero hero hero hero hero"
       "hero hero hero hero hero hero hero hero hero hero hero hero"
@@ -1508,13 +1508,17 @@ a {
       "status status status status status status about about about about about about"
       "status status status status status status about about about about about about"
       "status status status status status status about about about about about about"
+      "status status status status status status about about about about about about"
       "stack stack stack stack stack stack stats stats stats stats stats stats"
       "stack stack stack stack stack stack stats stats stats stats stats stats"
       "stack stack stack stack stack stack stats stats stats stats stats stats"
+      "stack stack stack stack stack stack stats stats stats stats stats stats"
+      "stack stack stack stack stack stack stats stats stats stats stats stats"
       "projects projects projects projects projects projects projects projects projects projects projects projects"
       "projects projects projects projects projects projects projects projects projects projects projects projects"
       "projects projects projects projects projects projects projects projects projects projects projects projects"
       "projects projects projects projects projects projects projects projects projects projects projects projects"
+      "activity activity activity activity activity activity activity activity activity activity activity activity"
       "activity activity activity activity activity activity activity activity activity activity activity activity"
       "activity activity activity activity activity activity activity activity activity activity activity activity"
       "activity activity activity activity activity activity activity activity activity activity activity activity"
@@ -1522,21 +1526,122 @@ a {
       "terminal terminal terminal terminal terminal terminal terminal terminal terminal terminal terminal terminal"
       "terminal terminal terminal terminal terminal terminal terminal terminal terminal terminal terminal terminal"
       "terminal terminal terminal terminal terminal terminal terminal terminal terminal terminal terminal terminal"
-      "timeline timeline timeline timeline timeline education education education education education education education"
-      "timeline timeline timeline timeline timeline education education education education education education education"
-      "timeline timeline timeline timeline timeline education education education education education education education"
-      "timeline timeline timeline timeline timeline education education education education education education education"
-      "timeline timeline timeline timeline timeline education education education education education education education"
+      "timeline timeline timeline timeline timeline timeline timeline timeline timeline timeline timeline timeline"
+      "timeline timeline timeline timeline timeline timeline timeline timeline timeline timeline timeline timeline"
+      "timeline timeline timeline timeline timeline timeline timeline timeline timeline timeline timeline timeline"
+      "education education education education education education education education education education education education"
+      "education education education education education education education education education education education education"
+      "education education education education education education education education education education education education"
+      "education education education education education education education education education education education education"
+      "education education education education education education education education education education education education"
       "contact contact contact contact contact contact contact contact contact contact contact contact"
       "contact contact contact contact contact contact contact contact contact contact contact contact";
   }
 
-  .education-list {
-    grid-template-columns: 1fr;
+  .status-avail {
+    font-size: 11px;
+    margin-top: 18px;
+    padding: 7px 10px;
+  }
+
+  .status-msg {
+    font-size: 26px;
+    margin-top: 34px;
+  }
+
+  .status-meta {
+    font-size: 10px;
+    gap: 6px;
+    padding-top: 22px;
+  }
+
+  .stack-list {
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .stack-row {
+    gap: 10px;
+    grid-template-columns: 86px minmax(0, 1fr);
+    padding-bottom: 10px;
+  }
+
+  .stack-cat {
+    font-size: 9.5px;
+    padding-top: 7px;
+  }
+
+  .chip {
+    font-size: 12px;
+    padding: 6px 9px;
+  }
+
+  .hero {
+    gap: clamp(24px, 3vw, 44px);
+  }
+
+  .gh-head {
+    margin-top: 12px;
+  }
+
+  .gh-grid {
+    aspect-ratio: auto;
+    height: 140px;
+    margin-top: 14px;
+  }
+
+  .gh-legend {
+    margin-top: 10px;
   }
 
   .gh-repos {
+    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 14px;
+    padding-top: 12px;
+  }
+
+  .gh-repo {
+    align-items: start;
+    grid-template-columns: 8px minmax(0, 1fr);
+  }
+
+  .gh-repo-meta {
+    grid-column: 2;
+    margin-top: -5px;
+  }
+
+  .education-list {
+    align-items: stretch;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .education-item {
+    gap: 12px;
     grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .education-title-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .education-state {
+    margin-top: 0;
+  }
+
+  .education-body h3 {
+    font-size: 24px;
+  }
+
+  .education-body p {
+    font-size: 13px;
+  }
+
+  .education-tag {
+    font-size: 10px;
+    padding: 3px 6px;
   }
 
   .c-hero {
@@ -1691,6 +1796,10 @@ a {
   .education-title-row,
   .education-item {
     align-items: flex-start;
+  }
+
+  .education-list {
+    grid-template-columns: 1fr;
   }
 
   .education-item {
