@@ -43,6 +43,15 @@ export function PortfolioExperience({ activity }: PortfolioExperienceProps) {
     return () => desktopQuery.removeEventListener("change", syncDesktopState);
   }, []);
 
+  useEffect(() => {
+    document.body.classList.toggle(
+      "terminal-mode-body",
+      isDesktop && isTerminalMode,
+    );
+
+    return () => document.body.classList.remove("terminal-mode-body");
+  }, [isDesktop, isTerminalMode]);
+
   const terminalEnabled = isDesktop;
 
   return (
