@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "motion/react";
 import { useMemo } from "react";
 
 const palette = ["#18181b", "#2a1a1c", "#4a1f22", "#7a2a2e", "oklch(0.72 0.18 20)"];
@@ -27,7 +28,6 @@ function createActivityCells() {
       cells.push({
         id: `${week}-${day}`,
         background: palette[level],
-        delay: `${(week * 7 + day) * 6}ms`,
         gridColumn: week + 1,
         gridRow: day + 1,
       });
@@ -43,12 +43,18 @@ export function ActivityGrid() {
   return (
     <div className="gh-grid" aria-hidden="true">
       {cells.map((cell) => (
-        <span
+        <motion.span
           className="gh-cell"
           key={cell.id}
+          initial={{ opacity: 0, scale: 0.4 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            delay: (cell.gridColumn * 7 + cell.gridRow) * 0.006,
+            duration: 0.6,
+            ease: [0.2, 0.8, 0.2, 1],
+          }}
           style={{
             background: cell.background,
-            animationDelay: cell.delay,
             gridColumn: cell.gridColumn,
             gridRow: cell.gridRow,
           }}

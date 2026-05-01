@@ -8,6 +8,7 @@ export function PortfolioNav() {
         <a href="#work">work</a>
         <a href="#about">about</a>
         <a href="#stack">stack</a>
+        <a href="#education">education</a>
         <a href="#contact">contact</a>
       </div>
     </nav>

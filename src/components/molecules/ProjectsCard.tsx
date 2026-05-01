@@ -1,10 +1,11 @@
+import { MotionCard } from "@/src/components/atoms/MotionCard";
 import { SectionLabel } from "@/src/components/atoms/SectionLabel";
 import { projects } from "@/src/data/projects";
 import { ProjectCard } from "@/src/components/molecules/ProjectCard";
 
 export function ProjectsCard() {
   return (
-    <section className="cell c-projects" id="work">
+    <MotionCard className="cell c-projects" id="work" delay={0.25}>
       <div className="projects">
         <div className="projects-head">
           <SectionLabel>Selected work</SectionLabel>
@@ -18,6 +19,6 @@ export function ProjectsCard() {
           ))}
         </div>
       </div>
-    </section>
+    </MotionCard>
   );
 }

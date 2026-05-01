@@ -2,6 +2,7 @@ import { Spotlight } from "@/src/components/atoms/Spotlight";
 import { AboutCard } from "@/src/components/molecules/AboutCard";
 import { ActivityCard } from "@/src/components/molecules/ActivityCard";
 import { ContactCard } from "@/src/components/molecules/ContactCard";
+import { EducationCard } from "@/src/components/molecules/EducationCard";
 import { HeroCard } from "@/src/components/molecules/HeroCard";
 import { PortfolioFooter } from "@/src/components/molecules/PortfolioFooter";
 import { PortfolioNav } from "@/src/components/molecules/PortfolioNav";
@@ -28,6 +29,7 @@ export function PortfolioScreen() {
           <ActivityCard />
           <TerminalCard />
           <TimelineCard />
+          <EducationCard />
           <ContactCard />
         </main>
         <PortfolioFooter />

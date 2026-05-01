@@ -1,9 +1,10 @@
+import { MotionCard } from "@/src/components/atoms/MotionCard";
 import { SectionLabel } from "@/src/components/atoms/SectionLabel";
 import { timeline } from "@/src/data/portfolio";
 
 export function TimelineCard() {
   return (
-    <section className="cell c-timeline">
+    <MotionCard className="cell c-timeline" delay={0.4}>
       <SectionLabel>Experience</SectionLabel>
       <div className="tl-list">
         {timeline.map(([year, role, company, description], index) => (
@@ -16,6 +17,6 @@ export function TimelineCard() {
           </div>
         ))}
       </div>
-    </section>
+    </MotionCard>
   );
 }

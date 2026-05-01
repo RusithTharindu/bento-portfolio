@@ -1,8 +1,9 @@
+import { MotionCard } from "@/src/components/atoms/MotionCard";
 import { TerminalOutput } from "@/src/components/atoms/TerminalOutput";
 
 export function TerminalCard() {
   return (
-    <section className="cell c-terminal">
+    <MotionCard className="cell c-terminal" delay={0.35}>
       <div className="term">
         <div className="term-bar">
           <span className="term-dot r" />
@@ -12,6 +13,6 @@ export function TerminalCard() {
         </div>
         <TerminalOutput />
       </div>
-    </section>
+    </MotionCard>
   );
 }

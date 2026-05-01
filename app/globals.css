@@ -63,15 +63,9 @@ a {
 }
 
 .spotlight {
-  background: radial-gradient(
-    600px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(255, 255, 255, 0.045),
-    transparent 40%
-  );
   inset: 0;
   pointer-events: none;
   position: fixed;
-  transition: background 0.15s linear;
   z-index: 2;
 }
 
@@ -143,7 +137,6 @@ a {
 }
 
 .cell {
-  animation: rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
   background: linear-gradient(180deg, var(--surface) 0%, var(--bg-2) 100%);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -152,7 +145,6 @@ a {
   padding: 22px;
   position: relative;
   transition:
-    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
     border-color 0.3s,
     box-shadow 0.3s;
 }
@@ -190,7 +182,6 @@ a {
 .cell:hover {
   border-color: var(--border-2);
   box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.6);
-  transform: translateY(-2px);
 }
 
 .cell:hover::after {
@@ -239,9 +230,80 @@ a {
   grid-row: span 5;
 }
 
+.c-education {
+  grid-column: span 12;
+  grid-row: span 3;
+}
+
 .c-contact {
   grid-column: span 12;
   grid-row: span 2;
+}
+
+@media (min-width: 1025px) {
+  .bento {
+    grid-template-areas:
+      "hero hero hero hero hero hero hero hero status status status status"
+      "hero hero hero hero hero hero hero hero status status status status"
+      "hero hero hero hero hero hero hero hero about about about about"
+      "hero hero hero hero hero hero hero hero about about about about"
+      "stack stack stack stack stats stats stats stats about about about about"
+      "stack stack stack stack projects projects projects projects projects projects projects projects"
+      "stack stack stack stack projects projects projects projects projects projects projects projects"
+      "activity activity activity activity projects projects projects projects projects projects projects projects"
+      "activity activity activity activity terminal terminal terminal terminal terminal terminal terminal terminal"
+      "timeline timeline timeline timeline terminal terminal terminal terminal terminal terminal terminal terminal"
+      "timeline timeline timeline timeline terminal terminal terminal terminal terminal terminal terminal terminal"
+      "timeline timeline timeline timeline education education education education education education education education"
+      "timeline timeline timeline timeline education education education education education education education education"
+      "timeline timeline timeline timeline education education education education education education education education"
+      "contact contact contact contact contact contact contact contact contact contact contact contact"
+      "contact contact contact contact contact contact contact contact contact contact contact contact";
+  }
+
+  .c-hero {
+    grid-area: hero;
+  }
+
+  .c-status {
+    grid-area: status;
+  }
+
+  .c-about {
+    grid-area: about;
+  }
+
+  .c-stack {
+    grid-area: stack;
+  }
+
+  .c-stats {
+    grid-area: stats;
+  }
+
+  .c-projects {
+    grid-area: projects;
+  }
+
+  .c-github {
+    grid-area: activity;
+  }
+
+  .c-terminal {
+    grid-area: terminal;
+  }
+
+  .c-timeline {
+    grid-area: timeline;
+  }
+
+  .c-education {
+    grid-area: education;
+  }
+
+  .c-contact {
+    grid-area: contact;
+  }
 }
 
 .label {
@@ -344,10 +406,8 @@ a {
 }
 
 .pulse {
-  animation: pulse 2s infinite;
   background: var(--ok);
   border-radius: 50%;
-  box-shadow: 0 0 0 0 color-mix(in oklab, var(--ok), transparent 40%);
   height: 8px;
   width: 8px;
 }
@@ -530,20 +590,14 @@ a {
   grid-template-columns: 28px 1fr auto 18px;
   padding: 14px 4px;
   text-decoration: none;
-  transition: padding 0.25s;
 }
 
 .project:hover {
   padding-left: 10px;
 }
 
-.project:hover .proj-arrow,
 .p-next .nx:hover {
   color: var(--accent);
-}
-
-.project:hover .proj-arrow {
-  transform: translateX(4px);
 }
 
 .proj-num {
@@ -621,10 +675,7 @@ a {
 }
 
 .gh-cell {
-  animation: ghin 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   border-radius: 2px;
-  opacity: 0;
-  transform: scale(0.4);
 }
 
 .gh-legend {
@@ -786,6 +837,124 @@ a {
   line-height: 1.55;
   margin-top: 6px;
   max-width: 42ch;
+}
+
+.education {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+
+.education-head {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.education-note {
+  color: var(--text-3);
+  font-family: var(--ff-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.education-list {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.education-item {
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 112px 1fr;
+  min-width: 0;
+  padding: 18px;
+}
+
+.education-period {
+  color: var(--accent);
+  font-family: var(--ff-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.education-title-row {
+  align-items: flex-start;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.education-state {
+  background: rgba(255, 255, 255, 0.018);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-2);
+  flex: 0 0 auto;
+  font-family: var(--ff-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  margin-top: 4px;
+  padding: 6px 9px;
+  text-transform: uppercase;
+}
+
+.education-state.current {
+  border-color: color-mix(in oklab, var(--accent), transparent 45%);
+  color: var(--accent);
+}
+
+.education-body {
+  min-width: 0;
+}
+
+.education-body h3 {
+  color: var(--text);
+  font-family: var(--ff-serif), Georgia, serif;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+  margin: 0;
+}
+
+.education-school {
+  color: var(--text);
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.education-body p {
+  color: var(--text-2);
+  font-size: 13.5px;
+  line-height: 1.55;
+  margin: 10px 0 0;
+}
+
+.education-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.education-tag {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-2);
+  font-family: var(--ff-mono), ui-monospace, monospace;
+  font-size: 10.5px;
+  padding: 3px 7px;
 }
 
 .contact {
@@ -1142,39 +1311,6 @@ a {
   font-size: 24px;
 }
 
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(20px) scale(0.98);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 color-mix(in oklab, var(--ok), transparent 40%);
-  }
-
-  70% {
-    box-shadow: 0 0 0 10px color-mix(in oklab, var(--ok), transparent 100%);
-  }
-
-  100% {
-    box-shadow: 0 0 0 0 color-mix(in oklab, var(--ok), transparent 100%);
-  }
-}
-
-@keyframes ghin {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
 @keyframes blink {
   50% {
     opacity: 0;
@@ -1192,48 +1328,168 @@ a {
   }
 }
 
+@media (min-width: 1025px) {
+  .bento {
+    grid-auto-rows: minmax(96px, auto);
+    grid-template-areas: none;
+  }
+
+  .c-hero {
+    grid-area: auto;
+    grid-column: 1 / span 8;
+    grid-row: 1 / span 4;
+  }
+
+  .c-status {
+    grid-area: auto;
+    grid-column: 9 / span 4;
+    grid-row: 1 / span 2;
+  }
+
+  .c-about {
+    grid-area: auto;
+    grid-column: 9 / span 4;
+    grid-row: 3 / span 3;
+  }
+
+  .c-stack {
+    grid-area: auto;
+    grid-column: 1 / span 4;
+    grid-row: 5 / span 4;
+  }
+
+  .c-stats {
+    grid-area: auto;
+    grid-column: 5 / span 4;
+    grid-row: 5 / span 3;
+    min-height: 300px;
+  }
+
+  .c-projects {
+    grid-area: auto;
+    grid-column: 5 / span 8;
+    grid-row: 8 / span 4;
+  }
+
+  .c-github {
+    grid-area: auto;
+    grid-column: 1 / span 4;
+    grid-row: 9 / span 4;
+  }
+
+  .c-terminal {
+    grid-area: auto;
+    grid-column: 5 / span 8;
+    grid-row: 12 / span 3;
+    min-height: 320px;
+  }
+
+  .c-timeline {
+    grid-area: auto;
+    grid-column: 1 / span 4;
+    grid-row: 13 / span 5;
+  }
+
+  .c-education {
+    grid-area: auto;
+    grid-column: 5 / span 8;
+    grid-row: 15 / span 5;
+    min-height: 520px;
+  }
+
+  .c-contact {
+    grid-area: auto;
+    grid-column: 1 / span 12;
+    grid-row: 20 / span 2;
+  }
+
+  .c-education .education-list {
+    grid-template-columns: 1fr;
+  }
+
+  .c-education .education-item {
+    grid-template-columns: 120px minmax(0, 1fr);
+  }
+}
+
 @media (max-width: 1024px) {
   .bento {
     gap: 12px;
     grid-auto-rows: 100px;
+    grid-template-areas:
+      "hero hero hero hero hero hero hero hero hero hero hero hero"
+      "hero hero hero hero hero hero hero hero hero hero hero hero"
+      "hero hero hero hero hero hero hero hero hero hero hero hero"
+      "hero hero hero hero hero hero hero hero hero hero hero hero"
+      "status status status status status status about about about about about about"
+      "status status status status status status about about about about about about"
+      "status status status status status status about about about about about about"
+      "stack stack stack stack stack stack stats stats stats stats stats stats"
+      "stack stack stack stack stack stack stats stats stats stats stats stats"
+      "stack stack stack stack stack stack stats stats stats stats stats stats"
+      "projects projects projects projects projects projects projects projects projects projects projects projects"
+      "projects projects projects projects projects projects projects projects projects projects projects projects"
+      "projects projects projects projects projects projects projects projects projects projects projects projects"
+      "projects projects projects projects projects projects projects projects projects projects projects projects"
+      "activity activity activity activity activity activity terminal terminal terminal terminal terminal terminal"
+      "activity activity activity activity activity activity terminal terminal terminal terminal terminal terminal"
+      "activity activity activity activity activity activity terminal terminal terminal terminal terminal terminal"
+      "timeline timeline timeline timeline timeline terminal terminal terminal terminal terminal terminal terminal"
+      "timeline timeline timeline timeline timeline education education education education education education education"
+      "timeline timeline timeline timeline timeline education education education education education education education"
+      "timeline timeline timeline timeline timeline education education education education education education education"
+      "timeline timeline timeline timeline timeline education education education education education education education"
+      "timeline timeline timeline timeline timeline education education education education education education education"
+      "contact contact contact contact contact contact contact contact contact contact contact contact"
+      "contact contact contact contact contact contact contact contact contact contact contact contact";
   }
 
-  .c-hero,
-  .c-projects,
-  .c-github,
-  .c-contact {
-    grid-column: span 12;
+  .education-list {
+    grid-template-columns: 1fr;
   }
 
-  .c-hero,
-  .c-projects {
-    grid-row: span 4;
+  .c-hero {
+    grid-area: hero;
   }
 
-  .c-status,
-  .c-about,
-  .c-stack,
+  .c-status {
+    grid-area: status;
+  }
+
+  .c-about {
+    grid-area: about;
+  }
+
+  .c-stack {
+    grid-area: stack;
+  }
+
   .c-stats {
-    grid-column: span 6;
-    grid-row: span 3;
+    grid-area: stats;
   }
 
-  .c-github,
-  .c-terminal {
-    grid-row: span 3;
+  .c-projects {
+    grid-area: projects;
+  }
+
+  .c-github {
+    grid-area: activity;
   }
 
   .c-terminal {
-    grid-column: span 7;
+    grid-area: terminal;
   }
 
   .c-timeline {
-    grid-column: span 5;
-    grid-row: span 5;
+    grid-area: timeline;
+  }
+
+  .c-education {
+    grid-area: education;
   }
 
   .c-contact {
-    grid-row: span 2;
+    grid-area: contact;
   }
 }
 
@@ -1252,6 +1508,7 @@ a {
 
   .bento {
     grid-auto-rows: auto;
+    grid-template-areas: none;
   }
 
   .cell {
@@ -1268,6 +1525,7 @@ a {
   .c-github,
   .c-terminal,
   .c-timeline,
+  .c-education,
   .c-contact {
     grid-column: span 12;
     grid-row: auto;
@@ -1304,6 +1562,24 @@ a {
     align-items: flex-start;
     flex-direction: column;
     gap: 18px;
+  }
+
+  .education-head,
+  .education-title-row,
+  .education-item {
+    align-items: flex-start;
+  }
+
+  .education-item {
+    grid-template-columns: 1fr;
+  }
+
+  .education-head {
+    flex-direction: column;
+  }
+
+  .education-title-row {
+    flex-direction: column;
   }
 
   .contact-right {
