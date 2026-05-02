@@ -104,8 +104,7 @@ body {
 
 body.terminal-mode-body {
   color-scheme: dark;
-  scrollbar-color: color-mix(in oklab, var(--accent), var(--border-2) 60%)
-    var(--bg);
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   scrollbar-width: thin;
 }
 
@@ -115,17 +114,17 @@ body.terminal-mode-body::-webkit-scrollbar {
 }
 
 body.terminal-mode-body::-webkit-scrollbar-track {
-  background: var(--bg);
+  background: var(--scrollbar-track);
 }
 
 body.terminal-mode-body::-webkit-scrollbar-thumb {
-  background: color-mix(in oklab, var(--accent), var(--border-2) 58%);
-  border: 2px solid var(--bg);
+  background: var(--scrollbar-thumb);
+  border: 2px solid var(--scrollbar-track);
   border-radius: 999px;
 }
 
 body.terminal-mode-body::-webkit-scrollbar-thumb:hover {
-  background: color-mix(in oklab, var(--accent), var(--text) 16%);
+  background: var(--scrollbar-thumb-hover);
 }
 
 body::before {
@@ -1266,8 +1265,7 @@ a {
 .terminal-mode *,
 .terminal-mode-window,
 .terminal-console {
-  scrollbar-color: color-mix(in oklab, var(--accent), var(--border-2) 60%)
-    rgba(255, 255, 255, 0.025);
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   scrollbar-width: thin;
 }
 
@@ -1287,7 +1285,7 @@ a {
 .terminal-mode *::-webkit-scrollbar-track,
 .terminal-mode-window::-webkit-scrollbar-track,
 .terminal-console::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.025);
+  background: var(--scrollbar-track);
   border-radius: 999px;
 }
 
@@ -1295,8 +1293,8 @@ a {
 .terminal-mode *::-webkit-scrollbar-thumb,
 .terminal-mode-window::-webkit-scrollbar-thumb,
 .terminal-console::-webkit-scrollbar-thumb {
-  background: color-mix(in oklab, var(--accent), var(--border-2) 58%);
-  border: 2px solid var(--bg-2);
+  background: var(--scrollbar-thumb);
+  border: 2px solid var(--scrollbar-track);
   border-radius: 999px;
   min-height: 44px;
 }
@@ -1305,7 +1303,7 @@ a {
 .terminal-mode *::-webkit-scrollbar-thumb:hover,
 .terminal-mode-window::-webkit-scrollbar-thumb:hover,
 .terminal-console::-webkit-scrollbar-thumb:hover {
-  background: color-mix(in oklab, var(--accent), var(--text) 16%);
+  background: var(--scrollbar-thumb-hover);
 }
 
 .terminal-mode::-webkit-scrollbar-corner,
