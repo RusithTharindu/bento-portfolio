@@ -29,8 +29,68 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "passgo",
+    slug: "spendshift",
     number: "01",
+    title: "SpendShift",
+    shortTitle: "SpendShift",
+    description:
+      "Personal expense tracker with budgets, insights, categories, auth, and CSV export.",
+    tags: ["Next.js", "MongoDB", "Finance"],
+    year: "2026",
+    status: "LIVE",
+    heading: {
+      before: "",
+      emphasis: "SpendShift",
+      after: "personal spending, made visible.",
+    },
+    lede:
+      "A web-based personal expense tracker built as a full-stack Next.js application. It helps users log expenses, organize categories, set monthly budgets, inspect spending patterns, customize the interface, and export their financial activity from a polished responsive dashboard.",
+    actions: [
+      {
+        label: "Live app",
+        href: "https://spendshift.vercel.app",
+      },
+      {
+        label: "Source",
+        href: "https://github.com/RusithTharindu/spendshift",
+      },
+    ],
+    overview: {
+      problem:
+        "Personal finance tools can become either too heavy for daily use or too shallow to reveal where money is actually going. The product needed a fast expense-entry flow, persistent account data, budget feedback, and useful visual summaries without turning routine tracking into spreadsheet work.",
+      approach:
+        "SpendShift uses a Next.js 16 App Router structure with authenticated app routes for dashboard, activity, budgets, categories, insights, and settings. API route handlers back the product with MongoDB and Mongoose models for users, expenses, budgets, and categories, while the client app coordinates optimistic-feeling state, onboarding, sample data seeding, theme and accent customization, currency preferences, charts, sheets, and export actions.",
+    },
+    role:
+      "Full-stack engineer. Designed and implemented the product experience, authentication flow, database models, API routes, dashboard analytics, budget/category management, settings surface, responsive UI system, and Vercel deployment.",
+    highlights: [
+      "Authenticated account flow uses normalized email handling, scrypt password hashing, signed HTTP-only session cookies, protected app routes, and logout support.",
+      "Expense tracking covers create, edit, delete, bulk sample seeding, recurring markers, merchant notes, category assignment, base currency display, and CSV export.",
+      "Dashboard and insights surfaces show monthly KPIs, last-7-day totals, daily averages, 30-day spending bars, category breakdowns, merchant rankings, donut charts, and month heatmaps.",
+      "Budget and category tools let users set monthly caps, compare spend against limits, manage custom category glyphs/colors, and reset or reseed app data.",
+      "Personalization includes onboarding, light/dark/system themes, accent palettes, base currency selection, density/font tweaks, mobile sheets, reusable atoms, and a responsive app shell.",
+    ],
+    stack: [
+      "TypeScript",
+      "Next.js 16",
+      "React 19",
+      "MongoDB",
+      "Mongoose",
+      "Tailwind CSS",
+      "Vaul",
+      "Vercel",
+    ],
+    glance: [
+      ["Surface", "Personal finance web app"],
+      ["Routes", "Dashboard, activity, budgets, categories, insights, settings"],
+      ["Backend", "Next.js API routes + MongoDB"],
+      ["Auth", "scrypt passwords + signed session cookies"],
+      ["Status", "Live / public source"],
+    ],
+  },
+  {
+    slug: "passgo",
+    number: "02",
     title: "Project PassGo",
     shortTitle: "PassGo",
     description:
@@ -94,7 +154,7 @@ export const projects: Project[] = [
   },
   {
     slug: "respawn-realm",
-    number: "02",
+    number: "03",
     title: "RespawnRealm",
     shortTitle: "Respawn",
     description:
@@ -144,7 +204,7 @@ export const projects: Project[] = [
   },
   {
     slug: "healthharmony",
-    number: "03",
+    number: "04",
     title: "HealthHarmony",
     shortTitle: "Health",
     description:
@@ -204,7 +264,7 @@ export const projects: Project[] = [
   },
   {
     slug: "techie-sleuths-2024",
-    number: "04",
+    number: "05",
     title: "Techie Sleuths 2024",
     shortTitle: "Sleuths",
     description:
@@ -263,7 +323,7 @@ export const projects: Project[] = [
   },
   {
     slug: "campus-housing-portal",
-    number: "05",
+    number: "06",
     title: "Campus Housing Portal",
     shortTitle: "Housing",
     description:
@@ -319,7 +379,7 @@ export const projects: Project[] = [
   },
   {
     slug: "purrfectpal",
-    number: "06",
+    number: "07",
     title: "PurrfectPal",
     shortTitle: "Purrfect",
     description:
@@ -374,7 +434,7 @@ export const projects: Project[] = [
   },
   {
     slug: "tasktrail",
-    number: "07",
+    number: "08",
     title: "TaskTrail",
     shortTitle: "TaskTrail",
     description:
