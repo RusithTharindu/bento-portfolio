@@ -5,8 +5,12 @@ type ProjectPreviewProps = {
   project: Project;
 };
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export function ProjectPreview({ project }: ProjectPreviewProps) {
   if (project.previewImage) {
+    const previewImage = `${basePath}${project.previewImage}`;
+
     return (
       <figure className="preview preview-media">
         <div className="preview-image-frame">
@@ -16,7 +20,7 @@ export function ProjectPreview({ project }: ProjectPreviewProps) {
             fill
             priority={project.number === "01"}
             sizes="(max-width: 720px) calc(100vw - 32px), (max-width: 1180px) calc(100vw - 56px), 1100px"
-            src={project.previewImage}
+            src={previewImage}
           />
         </div>
         <figcaption>
