@@ -13,6 +13,8 @@ export type Project = {
     after: string;
   };
   lede: string;
+  previewImage?: string;
+  previewAlt?: string;
   actions: Array<{
     label: string;
     href: string;
@@ -45,6 +47,9 @@ export const projects: Project[] = [
     },
     lede:
       "A web-based personal expense tracker built as a full-stack Next.js application. It helps users log expenses, organize categories, set monthly budgets, inspect spending patterns, customize the interface, and export their financial activity from a polished responsive dashboard.",
+    previewImage: "/projects/spendshift/preview.webp",
+    previewAlt:
+      "SpendShift dashboard showing personal expense totals, spending charts, budgets, and recent activity.",
     actions: [
       {
         label: "Live app",

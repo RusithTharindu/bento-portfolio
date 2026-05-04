@@ -1771,7 +1771,7 @@ a.tm-line:hover {
   font-size: 11px;
   justify-content: center;
   letter-spacing: 0.08em;
-  margin-bottom: 48px;
+  margin: 0 0 48px;
   overflow: hidden;
   position: relative;
 }
@@ -1790,6 +1790,63 @@ a.tm-line:hover {
 .preview span {
   position: relative;
   z-index: 1;
+}
+
+.preview-media {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.035), transparent 56%),
+    radial-gradient(circle at 24% 18%, var(--accent-soft), transparent 52%),
+    #09090a;
+  box-shadow: 0 30px 80px -55px rgba(0, 0, 0, 0.9);
+  display: block;
+}
+
+.preview-media::before {
+  opacity: 0.55;
+  z-index: 2;
+}
+
+.preview-media::after {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.06), transparent 26%),
+    radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.08), transparent 35%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.26), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.26));
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 3;
+}
+
+.preview-image-frame {
+  inset: clamp(10px, 1.4vw, 18px);
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+}
+
+.preview-image {
+  object-fit: contain;
+  object-position: center;
+  z-index: 1;
+}
+
+.preview-media figcaption {
+  background: rgba(11, 11, 12, 0.74);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  color: var(--text-2);
+  font-family: var(--ff-mono), ui-monospace, monospace;
+  font-size: 10px;
+  left: 50%;
+  letter-spacing: 0.08em;
+  padding: 7px 11px;
+  position: absolute;
+  text-transform: uppercase;
+  top: 18px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  z-index: 4;
 }
 
 .p-grid {
@@ -2659,10 +2716,30 @@ a.tm-line:hover {
   }
 
   .foot,
-  .p-next,
-  .p-meta {
+  .p-next {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .p-meta {
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .p-meta .divider {
+    flex: 0 0 16px;
+    width: 16px;
+  }
+
+  .project-shell .p-meta,
+  .projects-shell .p-meta {
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
   }
 
   .p-grid {
